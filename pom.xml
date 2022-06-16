@@ -4,6 +4,17 @@
   <artifactId>votoelectronico-open-api</artifactId>
   <version>0.0.1</version>
   <packaging>pom</packaging>
+  
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.0</version>
+		<relativePath />
+	</parent>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	
   <modules>
   	<module>votoelectronico-domain</module>
   	<module>votoelectronico-persistence</module>
@@ -12,4 +23,29 @@
   	<module>votoelectronico-common</module>
   	<module>votoelectronico-app</module>
   </modules>
+  
+  <dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 </project>
