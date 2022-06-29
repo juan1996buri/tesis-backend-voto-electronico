@@ -25,7 +25,7 @@ public class Votante {
 	private long id;
 	
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true,nullable = false)
 	private String cedula;
 	
 	@Column	

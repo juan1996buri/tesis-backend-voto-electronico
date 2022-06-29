@@ -44,16 +44,10 @@ public class VotanteService extends GenericCrudServiceImpl<Votante, VotanteDTO> 
 		if (!optionalVotante.isPresent()) {
 			throw new ResourceNotFoundException(String.format("El votante %s no se encuentra registrado", cedula));
 		}
-		Votante votante = optionalVotante.get();
-		votante.setName(dto.getName());
-		votante.setCedula(dto.getCedula());
-		votante.setCode(dto.getCode());
-		votante.setEmail(dto.getEmail());
-		votante.setLastName(dto.getLastName());
-		votante.setPhone(dto.getPhone());
-		votante.setPhoto(dto.getPhoto());
-		votante.setIsActive(dto.getIsActive());
-		repository.save(votante);		
+		
+		dto.setId(optionalVotante.get().getId());
+		Votante votante=mapToDomain(dto);				
+		repository.save(votante);
 	}
 
 }

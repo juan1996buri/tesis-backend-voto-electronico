@@ -32,7 +32,7 @@ public class RecintoController {
 	}
 
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody RecintoDTO dto) {
+	public ResponseEntity<Object> update(@PathVariable long id, @RequestBody RecintoDTO dto) {
 		service.update(id, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}

@@ -32,6 +32,6 @@ public class Recinto {
 	
 	@ManyToOne
 	@JoinColumn(name = "ciudad_id")
-	private Institucion institu;*/
+	private Institucion instituto;*/
 
 }

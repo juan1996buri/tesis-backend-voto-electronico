@@ -40,17 +40,15 @@ public class GrupoService extends GenericCrudServiceImpl<Grupo, GrupoDTO> {
 		return domain;
 	}
 	
-	public void update(Long id, GrupoDTO dto) {
+	public void update(long id, GrupoDTO dto) {
 		GrupoDTO grupoDto = new GrupoDTO();
 		grupoDto.setId(id);
 		Optional<Grupo> optionalGrupo = repository.findById(grupoDto.getId());
 		if (!optionalGrupo.isPresent()) {
 			throw new ResourceNotFoundException(String.format("El Grupo %s no se encuentra registrado"));
 		}
-		Grupo grupo = optionalGrupo.get();
-		grupo.setName(dto.getName());
-		//grupo.setJunta(dto.getJunta());
-		
+		dto.setId(id);
+		Grupo grupo = mapToDomain(dto);		
 		repository.save(grupo);		
 	}
 

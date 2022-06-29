@@ -40,17 +40,13 @@ public class JuntaService extends GenericCrudServiceImpl<Junta, JuntaDTO> {
 
 	public void update(long id, JuntaDTO dto) {
 		JuntaDTO juntaDto = new JuntaDTO();
-		juntaDto.setId(id);
+		juntaDto.setId(id);		
 		Optional<Junta> optionalJunta = repository.findById(juntaDto.getId());
 		if (!optionalJunta.isPresent()) {
 			throw new ResourceNotFoundException(String.format("Esta junta %s no se encuentra registrado"));
 		}
-		Junta junta = optionalJunta.get();
-		junta.setNumber(dto.getNumber());
-		junta.setPresident(dto.getPresident());
-		//junta.setRecinto(dto.getRecinto());
-		junta.setSecretary(dto.getSecretary());
-		junta.setVicePresident(dto.getVicePresident());
+		dto.setId(id);
+		Junta junta = mapToDomain(dto);
 		repository.save(junta);
 	}
 
