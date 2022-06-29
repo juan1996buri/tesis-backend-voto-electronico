@@ -2,37 +2,43 @@ package ec.edu.insteclrg.service.crud;
 
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
 import ec.edu.insteclrg.domain.Junta;
-import ec.edu.insteclrg.domain.Votante;
 import ec.edu.insteclrg.dto.JuntaDTO;
 import ec.edu.insteclrg.dto.VotanteDTO;
 import ec.edu.insteclrg.persistence.JuntaRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
 
+@Service
 public class JuntaService extends GenericCrudServiceImpl<Junta, JuntaDTO> {
 
 	@Autowired
 	private JuntaRepository repository;
 	
+	private ModelMapper modelMapper=new ModelMapper();
+	
 	@Override
-	public Optional<Junta> find(JuntaDTO dto) {
-		return null;
+	public Optional<Junta> find(JuntaDTO dto) {		
+		return repository.findById(dto.getId());
 	}
 
 	@Override
 	public JuntaDTO mapToDto(Junta domain) {
-		return null;
+		JuntaDTO dto=modelMapper.map(domain, JuntaDTO.class);
+		return dto;
 	}
 
 	@Override
 	public Junta mapToDomain(JuntaDTO dto) {
-		return null;
+		Junta domain=modelMapper.map(dto, Junta.class);
+		return domain;
 	}
 
-	public void update(long id, VotanteDTO dto) {
+	public void update(long id, JuntaDTO dto) {
 		JuntaDTO juntaDto = new JuntaDTO();
 		juntaDto.setId(id);
 		Optional<Junta> optionalJunta = repository.findById(juntaDto.getId());
@@ -40,11 +46,11 @@ public class JuntaService extends GenericCrudServiceImpl<Junta, JuntaDTO> {
 			throw new ResourceNotFoundException(String.format("Esta junta %s no se encuentra registrado"));
 		}
 		Junta junta = optionalJunta.get();
-		junta.setNumber(junta.getNumber());
-		junta.setPresident(junta.getPresident());
-		junta.setRecinto(junta.getRecinto());
-		junta.setSecretary(junta.getSecretary());
-		junta.setVicePresident(junta.getVicePresident());
+		junta.setNumber(dto.getNumber());
+		junta.setPresident(dto.getPresident());
+		//junta.setRecinto(dto.getRecinto());
+		junta.setSecretary(dto.getSecretary());
+		junta.setVicePresident(dto.getVicePresident());
 		repository.save(junta);
 	}
 

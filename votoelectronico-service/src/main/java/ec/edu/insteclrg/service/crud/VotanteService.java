@@ -2,6 +2,7 @@ package ec.edu.insteclrg.service.crud;
 
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,38 +18,22 @@ public class VotanteService extends GenericCrudServiceImpl<Votante, VotanteDTO> 
 	@Autowired
 	private VotanteRepository repository;
 	
+	ModelMapper modelMapper=new ModelMapper();	
+	
 	@Override
 	public Optional<Votante> find(VotanteDTO dto) {
 		return repository.findByCedula(dto.getCedula());
 	}
 	
 	@Override
-	public VotanteDTO mapToDto(Votante domain) {
-		VotanteDTO dto=new VotanteDTO();
-		dto.setId(domain.getId());
-		dto.setCedula(domain.getCedula());
-		dto.setCode(domain.getCode());
-		dto.setEmail(domain.getEmail());
-		dto.setLastName(domain.getLastName());
-		dto.setName(domain.getName());
-		dto.setPhone(domain.getPhone());
-		dto.setPhoto(domain.getPhoto());
-	    dto.setIsActive(domain.getIsActive());
+	public VotanteDTO mapToDto(Votante domain) {			
+		VotanteDTO dto=modelMapper.map(domain, VotanteDTO.class);	
 		return dto;
 	}
 
 	@Override
 	public Votante mapToDomain(VotanteDTO dto) {
-		Votante domain = new Votante();
-		domain.setId(dto.getId());
-		domain.setCedula(dto.getCedula());
-		domain.setCode(dto.getCode());
-		domain.setEmail(dto.getEmail());
-		domain.setLastName(dto.getLastName());
-		domain.setName(dto.getName());
-		domain.setPhone(dto.getPhone());
-		domain.setPhoto(dto.getPhoto());
-		domain.setIsActive(dto.getIsActive());
+		Votante domain = modelMapper.map(dto, Votante.class);
 		return domain;
 	}
 	

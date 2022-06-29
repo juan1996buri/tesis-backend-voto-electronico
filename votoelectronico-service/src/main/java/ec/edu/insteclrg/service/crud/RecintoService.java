@@ -2,15 +2,13 @@ package ec.edu.insteclrg.service.crud;
 
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
-import ec.edu.insteclrg.domain.Grupo;
 import ec.edu.insteclrg.domain.Recinto;
-import ec.edu.insteclrg.domain.Votante;
 import ec.edu.insteclrg.dto.RecintoDTO;
-import ec.edu.insteclrg.dto.VotanteDTO;
 import ec.edu.insteclrg.persistence.RecintoRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
 
@@ -19,6 +17,8 @@ public class RecintoService extends GenericCrudServiceImpl<Recinto, RecintoDTO> 
 
 	@Autowired
 	private RecintoRepository repository;
+	
+	private ModelMapper modelMapper=new ModelMapper();
 	@Override
 	public Optional<Recinto> find(RecintoDTO dto) {
 		return repository.findById(dto.getId());
@@ -26,12 +26,14 @@ public class RecintoService extends GenericCrudServiceImpl<Recinto, RecintoDTO> 
 
 	@Override
 	public RecintoDTO mapToDto(Recinto domain) {
-		return null;
+		RecintoDTO dto=modelMapper.map(domain, RecintoDTO.class);
+		return dto;
 	}
 
 	@Override
 	public Recinto mapToDomain(RecintoDTO dto) {
-		return null;
+		Recinto domain=modelMapper.map(dto, Recinto.class);
+		return domain;
 	}
 	
 	public void update(long id, RecintoDTO dto) {
