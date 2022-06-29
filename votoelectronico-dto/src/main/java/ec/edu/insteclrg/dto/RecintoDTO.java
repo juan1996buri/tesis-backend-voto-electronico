@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 public class RecintoDTO {
-private long id;
+    
+	private long id;
 	
 	private String name;
 	

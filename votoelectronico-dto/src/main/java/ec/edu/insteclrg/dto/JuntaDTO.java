@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class JuntaDTO {
-private long id;
+    
+	private long id;
 	
 	private String number;	
 		
