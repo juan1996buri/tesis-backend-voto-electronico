@@ -38,8 +38,8 @@ public class ProvinciaController {
 	// actualizar
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody ProvinciaDTO dto) {
-		service.update(id,dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true,"Actualizado"), HttpStatus.CREATED);
+		service.update(id, dto);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Actualizado"), HttpStatus.CREATED);
 	}
 
 //listar
@@ -67,14 +67,15 @@ public class ProvinciaController {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
 		}
 	}
+
 // eliminar
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
-		
-			ProvinciaDTO dto = new ProvinciaDTO();
-			dto.setId(id);
-			service.delete(dto);
-			return new ResponseEntity<>(new ApiResponseDTO<>(true, "eliminado"), HttpStatus.CREATED);
-		}
+
+		ProvinciaDTO dto = new ProvinciaDTO();
+		dto.setId(id);
+		service.delete(dto);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, "eliminado"), HttpStatus.CREATED);
+	}
 
 }
