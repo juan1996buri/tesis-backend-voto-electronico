@@ -34,9 +34,9 @@ public class InstitucionController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 	
-	@PutMapping(path = "/{username}")
-	public ResponseEntity<Object> update(@PathVariable String username, @RequestBody InstitucionDTO dto){
-		service.update(username, dto);
+	@PutMapping(path = "/{id}")
+	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody InstitucionDTO dto){
+		service.update(id, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 		
 	}
@@ -53,9 +53,9 @@ public class InstitucionController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Object> find(@PathVariable String username){
+	public ResponseEntity<Object> find(@PathVariable Long id){
 		InstitucionDTO dto = new InstitucionDTO();
-		dto.setUsername(username);
+		dto.setId(id);
 		Optional<Institucion> optional = service.find(dto);
 		if(optional.isPresent()) {
 			ApiResponseDTO<Institucion> response = new ApiResponseDTO<>(true, optional.get());
