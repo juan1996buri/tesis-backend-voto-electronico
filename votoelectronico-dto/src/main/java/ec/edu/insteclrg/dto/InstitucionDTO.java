@@ -13,13 +13,13 @@ public class InstitucionDTO {
 	
 	private String password;
 
-	private String nombre; 
+	private String name; 
 
     private CiudadDTO idCiudad;  
 	
-	private String direccion;
+	private String direction;
 
-	private String telefono;
+	private String phone;
 
 	private String ruc; 
 

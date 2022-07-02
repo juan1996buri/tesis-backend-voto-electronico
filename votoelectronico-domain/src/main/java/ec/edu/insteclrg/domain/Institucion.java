@@ -28,27 +28,25 @@ public class Institucion {
 	private String password;
 	
 	@Column
-	private String nombre; 
+	private String name; 
 	
 	@ManyToOne
-	@JoinColumn(name = "idCiudad")
+	@JoinColumn()
 	private Ciudad ciudad;  
 	
 	@Column
-	private String direccion;
+	private String direction;
 	
 	@Column
-	private String telefono;
+	private String phone;
 	
 	@Column
 	private String ruc; 
 	
 	@ManyToOne
-	@JoinColumn(name = "idTipoInstitucion")
-	private TipoInstitucion tipoInstitucion;
+	@JoinColumn()
+	private TipoInstitucion tipoinstitucion;
 	 	
 	@Column
 	private Boolean isActive; 
-	
-	
 }

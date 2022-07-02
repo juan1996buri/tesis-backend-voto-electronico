@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,7 +51,7 @@ public class TipoInstitucionController {
 	}  
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Object> find(@PathVariable long id){
+	public ResponseEntity<Object> find(@PathVariable Long id){
 		TipoInstitucionDTO dto = new TipoInstitucionDTO();
 		dto.setId(id);
 		Optional<TipoInstitucion> tipoInstitucion = service.find(dto);
@@ -61,7 +62,16 @@ public class TipoInstitucionController {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
 		}
 	}
+	
 
+	@DeleteMapping(path = "/{id}")
+	public ResponseEntity<Object> delete(@PathVariable Long id){
+		TipoInstitucionDTO dto = new TipoInstitucionDTO();
+		dto.setId(id);
+		service.delete(dto);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true,"eliminado"), HttpStatus.CREATED);
+		
+	}
 }
 
 

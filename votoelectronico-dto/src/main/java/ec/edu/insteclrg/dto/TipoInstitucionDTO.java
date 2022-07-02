@@ -9,5 +9,5 @@ public class TipoInstitucionDTO {
 
 	private String name;
 
-	private String descripcion;
+	private String description;
 }
