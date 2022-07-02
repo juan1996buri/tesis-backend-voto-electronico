@@ -23,6 +23,5 @@ public class TipoInstitucion {
 	private String name;
 
 	@Column(nullable = false)
-	private String descripcion;
-
+	private String description;
 }

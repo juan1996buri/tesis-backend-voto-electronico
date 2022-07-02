@@ -2,6 +2,7 @@ package ec.edu.insteclrg.service.crud;
 
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class TipoInstitucionService extends GenericCrudServiceImpl<TipoInstituci
 	@Autowired
 	private TipoInstitucionRepository repository;
 	
+	ModelMapper modelMapper=new ModelMapper();
+	
 	@Override
 	public Optional<TipoInstitucion> find(TipoInstitucionDTO dto) {
 		return repository.findById(dto.getId());
@@ -24,35 +27,26 @@ public class TipoInstitucionService extends GenericCrudServiceImpl<TipoInstituci
 
 	@Override
 	public TipoInstitucionDTO mapToDto(TipoInstitucion domain) {
-		TipoInstitucionDTO tipoDTO = new TipoInstitucionDTO();
-		tipoDTO.setId(domain.getId());
-		tipoDTO.setName(domain.getName());
-		tipoDTO.setDescripcion(domain.getDescripcion());
+		TipoInstitucionDTO tipoDTO=modelMapper.map(domain, TipoInstitucionDTO.class);
 		return tipoDTO;
 	}
 
 	@Override
 	public TipoInstitucion mapToDomain(TipoInstitucionDTO dto) {
-		TipoInstitucion tipoInstitucion = new TipoInstitucion();
-		tipoInstitucion.setId(dto.getId());
-		tipoInstitucion.setName(dto.getName());
-		tipoInstitucion.setDescripcion(dto.getDescripcion());
+		TipoInstitucion tipoInstitucion = modelMapper.map(dto, TipoInstitucion.class);
 		return tipoInstitucion;
 	}
 
 	public void update(long id, TipoInstitucionDTO dto) {
 		TipoInstitucionDTO tipoDTO = new TipoInstitucionDTO();
 		tipoDTO.setId(id);
-		Optional<TipoInstitucion> optionalTest = repository.findById(tipoDTO.getId());
-		if (!optionalTest.isPresent()) {
+		Optional<TipoInstitucion> optional = repository.findById(tipoDTO.getId());
+		if (!optional.isPresent()) {
 			throw new ResourceNotFoundException(String.format("El código %s no se encuentra registrado", id));
 		}
-		TipoInstitucion tipoInstitucion = new TipoInstitucion();
-		tipoInstitucion.setName(dto.getName());
-		repository.save(tipoInstitucion);
+		dto.setId(optional.get().getId());
+		TipoInstitucion tipo = mapToDomain(dto);
+		repository.save(tipo);
 	}
-	
-	
-	
 	
 }
