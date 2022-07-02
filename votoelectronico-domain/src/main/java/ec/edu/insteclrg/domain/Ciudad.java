@@ -26,9 +26,9 @@ public class Ciudad {
 	@Column(nullable = false)
 	private String name;
 
-	// relacion OneToMany
-//	@ManyToOne
-//	@JoinColumn(name = "provincia_id")
-//	private Provincia provincia;
+	// relacion ManytoOne
+	@ManyToOne
+	@JoinColumn(name = "provincia_id")
+	private Provincia provincia;
 
 }
