@@ -45,7 +45,7 @@ public class TipoInstitucionService extends GenericCrudServiceImpl<TipoInstituci
 			throw new ResourceNotFoundException(String.format("El código %s no se encuentra registrado", id));
 		}
 		dto.setId(optional.get().getId());
-		TipoInstitucion tipo = mapToDomain(dto);
+		TipoInstitucion tipo=mapToDomain(dto);
 		repository.save(tipo);
 	}
 	
