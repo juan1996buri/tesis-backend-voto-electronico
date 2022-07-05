@@ -63,15 +63,6 @@ public class TipoInstitucionController {
 		}
 	}
 	
-
-	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id){
-		TipoInstitucionDTO dto = new TipoInstitucionDTO();
-		dto.setId(id);
-		service.delete(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true,"eliminado"), HttpStatus.CREATED);
-		
-	}
 }
 
 

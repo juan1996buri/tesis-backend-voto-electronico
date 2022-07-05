@@ -62,10 +62,7 @@ public class InstitucionController {
 			return (new ResponseEntity<Object>(response, HttpStatus.OK));
 		}else {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
-		}
-	
+		}	
      }
-	
-
 }
 

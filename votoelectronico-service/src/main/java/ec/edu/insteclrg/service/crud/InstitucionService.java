@@ -3,13 +3,14 @@ package ec.edu.insteclrg.service.crud;
 import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
 import ec.edu.insteclrg.domain.Institucion;
 import ec.edu.insteclrg.dto.InstitucionDTO;
 import ec.edu.insteclrg.persistence.InstitucionRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
-
+@Service 
 public class InstitucionService extends GenericCrudServiceImpl<Institucion, InstitucionDTO>  {
 
 	@Autowired
@@ -34,12 +35,12 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 		return domain;
 	}
 	
-	public void update(String username,InstitucionDTO dto) {
+	public void update(Long id,InstitucionDTO dto) {
 		InstitucionDTO institucionDTO= new InstitucionDTO();
-		institucionDTO.setUsername(username);
-		Optional<Institucion> optional = repository.findByUsername(institucionDTO.getUsername());
+		institucionDTO.setId(id);
+		Optional<Institucion> optional = repository.findById(institucionDTO.getId());
 		if(!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El votante %s no se encuentra registrado", username)); 
+			throw new ResourceNotFoundException(String.format("El votante %s no se encuentra registrado", id)); 
 		}
 		dto.setId(optional.get().getId());
 		Institucion institucion=mapToDomain(dto);

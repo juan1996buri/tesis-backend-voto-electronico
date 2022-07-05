@@ -47,8 +47,7 @@ public class TipoCandidatoController {
 			return (new ResponseEntity<Object>(response, HttpStatus.OK));
 		}else {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null),HttpStatus.NOT_FOUND);
-		}
-			
+		}			
 	}
 	
 	@GetMapping(path = "/{id}")
@@ -62,14 +61,5 @@ public class TipoCandidatoController {
 		} else {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false,null), HttpStatus.NOT_FOUND);
 		}
-	}
-	
-	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id){
-		TipoCandidatoDTO dto = new TipoCandidatoDTO();
-		dto.setId(id);
-		service.delete(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true,"eliminado"), HttpStatus.CREATED);
-		
 	}
 }
