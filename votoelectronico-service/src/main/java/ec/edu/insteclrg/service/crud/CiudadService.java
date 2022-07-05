@@ -59,9 +59,5 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 
 	}
 
-	@Override
-	public void update(CiudadDTO dtoObject) {
-
-	}
-
+	
 }

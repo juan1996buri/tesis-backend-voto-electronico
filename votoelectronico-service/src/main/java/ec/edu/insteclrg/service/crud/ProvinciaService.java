@@ -53,11 +53,7 @@ public class ProvinciaService extends GenericCrudServiceImpl<Provincia, Provinci
 		repository.save(provincia);
 	}
 
-	@Override
-	public void update(ProvinciaDTO dtoObject) {
 	
-	}
-		
 		
 	}
 
