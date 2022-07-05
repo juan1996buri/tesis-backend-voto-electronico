@@ -27,7 +27,6 @@ public class ProvinciaController {
 	@Autowired
 	ProvinciaService service;
 
-//guardar	
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody ProvinciaDTO dto) {
 		service.save(dto);
@@ -35,14 +34,12 @@ public class ProvinciaController {
 
 	}
 
-	// actualizar
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody ProvinciaDTO dto) {
 		service.update(id, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Actualizado"), HttpStatus.CREATED);
 	}
 
-//listar
 	@GetMapping
 	public ResponseEntity<Object> findAll() {
 		List<ProvinciaDTO> list = service.findAll(new ProvinciaDTO());
@@ -54,7 +51,6 @@ public class ProvinciaController {
 		}
 	}
 
-//buscar
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<Object> find(@PathVariable Long id) {
 		ProvinciaDTO dto = new ProvinciaDTO();
@@ -68,13 +64,12 @@ public class ProvinciaController {
 		}
 	}
 
-// eliminar
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
 
 		ProvinciaDTO dto = new ProvinciaDTO();
 		dto.setId(id);
-		service.delete(dto);
+		service.delete(id, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, "eliminado"), HttpStatus.CREATED);
 	}
 

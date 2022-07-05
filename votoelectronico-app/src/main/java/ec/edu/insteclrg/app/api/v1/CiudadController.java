@@ -62,13 +62,12 @@ public class CiudadController {
 		}
 	}
 
-//eliminar
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
 
 		CiudadDTO dto = new CiudadDTO();
 		dto.setId(id);
-		service.delete(dto);
+		service.delete(id, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, "eliminado"), HttpStatus.CREATED);
 	}
 }

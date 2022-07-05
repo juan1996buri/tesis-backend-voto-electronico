@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
 import ec.edu.insteclrg.domain.Ciudad;
 import ec.edu.insteclrg.dto.CiudadDTO;
-import ec.edu.insteclrg.dto.ProvinciaDTO;
 import ec.edu.insteclrg.persistence.CiudadRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
 
@@ -18,7 +17,6 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 
 	@Autowired
 	private CiudadRepository repository;
-// usamos el modelmapper para mappear toda la clase
 
 	private ModelMapper modelMapper = new ModelMapper();
 
@@ -27,7 +25,6 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 		return repository.findById(dto.getId());
 	}
 
-//el traspaso de unos datos de un objeto entity a otra entity
 	@Override
 	public CiudadDTO mapToDto(Ciudad domain) {
 		CiudadDTO ciudadDTO = modelMapper.map(domain, CiudadDTO.class);
@@ -37,13 +34,10 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 
 	@Override
 	public Ciudad mapToDomain(CiudadDTO dto) {
-// llamamos a la entidad
-
 		Ciudad ciudad = modelMapper.map(dto, Ciudad.class);
 		return ciudad;
 	}
 
-//update: actualizacion
 	public void update(Long id, CiudadDTO dto) {
 		CiudadDTO ciudadDTO = new CiudadDTO();
 		ciudadDTO.setId(id);
@@ -59,5 +53,21 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 
 	}
 
-	
+	public void delete(long id, CiudadDTO dto) {
+		CiudadDTO ciudadDTO = new CiudadDTO();
+		ciudadDTO.setId(id);
+		Optional<Ciudad> optional = repository.findById(ciudadDTO.getId());
+		;
+		if (optional.isPresent()) {
+
+			dto.setId(optional.get().getId());
+			Ciudad ciudad = mapToDomain(dto);
+			ciudad.setName(dto.getName());
+			repository.delete(ciudad);
+		} else {
+			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", id));
+		}
+
+	}
+
 }
