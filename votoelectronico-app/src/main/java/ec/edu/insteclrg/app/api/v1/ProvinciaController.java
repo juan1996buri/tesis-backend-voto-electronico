@@ -37,7 +37,7 @@ public class ProvinciaController {
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody ProvinciaDTO dto) {
 		service.update(id, dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Actualizado"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping
@@ -70,7 +70,7 @@ public class ProvinciaController {
 		ProvinciaDTO dto = new ProvinciaDTO();
 		dto.setId(id);
 		service.delete(id, dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "eliminado"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 }

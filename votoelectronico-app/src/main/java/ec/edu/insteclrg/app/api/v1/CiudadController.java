@@ -68,6 +68,6 @@ public class CiudadController {
 		CiudadDTO dto = new CiudadDTO();
 		dto.setId(id);
 		service.delete(id, dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "eliminado"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true,null), HttpStatus.CREATED);
 	}
 }
