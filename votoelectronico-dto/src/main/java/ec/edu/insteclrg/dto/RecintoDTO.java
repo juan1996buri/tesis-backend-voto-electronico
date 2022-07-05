@@ -14,9 +14,7 @@ public class RecintoDTO {
 
 	private String phone;
 	
-	/*
-	private Ciudad ciudad;
+	private CiudadDTO ciudad;
 	
-	
-	private Institucion institu;*/
+	private InstitucionDTO institucion;
 }

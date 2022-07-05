@@ -25,5 +25,10 @@ public class VotanteDTO {
 	
 	private Boolean isActive;
 	
-	private GrupoDTO grupo;
+	private GrupoDTO grupo;	
+	
+	private InstitucionDTO institucion; 
+
+    private SexoDTO sexo; 
+	
 }

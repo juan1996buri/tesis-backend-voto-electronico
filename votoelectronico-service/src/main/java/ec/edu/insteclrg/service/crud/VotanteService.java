@@ -49,5 +49,4 @@ public class VotanteService extends GenericCrudServiceImpl<Votante, VotanteDTO> 
 		Votante votante=mapToDomain(dto);				
 		repository.save(votante);
 	}
-
 }

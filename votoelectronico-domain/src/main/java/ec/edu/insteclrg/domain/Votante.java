@@ -55,8 +55,12 @@ public class Votante {
 	@JoinColumn(name = "grupo_id")
 	private Grupo grupo;
 	
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "institucion_id")
-	private Institucion institucion;*/
+	private Institucion institucion;
+	
+	@ManyToOne
+	@JoinColumn(name = "sexo_id")
+	private Sexo Sexo;
 
 }

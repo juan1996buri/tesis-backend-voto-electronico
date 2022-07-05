@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
 import ec.edu.insteclrg.domain.Junta;
 import ec.edu.insteclrg.dto.JuntaDTO;
-import ec.edu.insteclrg.dto.VotanteDTO;
 import ec.edu.insteclrg.persistence.JuntaRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
 
@@ -48,6 +47,15 @@ public class JuntaService extends GenericCrudServiceImpl<Junta, JuntaDTO> {
 		dto.setId(id);
 		Junta junta = mapToDomain(dto);
 		repository.save(junta);
+	}
+	
+	public void delete(JuntaDTO dto) {
+		Optional<Junta> optionalJunta = repository.findById(dto.getId());
+		if (!optionalJunta.isPresent()) {
+			throw new ResourceNotFoundException(String.format("La junta %s no existe"));
+		}	
+		Junta junta=optionalJunta.get();
+		repository.delete(junta);
 	}
 
 }

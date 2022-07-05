@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,12 +28,14 @@ public class Recinto {
 	@Column	
 	private String phone;
 	
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "ciudad_id")
 	private Ciudad ciudad;
 	
+	
 	@ManyToOne
-	@JoinColumn(name = "ciudad_id")
-	private Institucion instituto;*/
+	@JoinColumn(name = "institucion_id")
+	private Institucion Institucion;
+
 
 }

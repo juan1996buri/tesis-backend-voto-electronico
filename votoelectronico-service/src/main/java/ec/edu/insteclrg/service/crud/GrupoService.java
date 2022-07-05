@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
 import ec.edu.insteclrg.domain.Grupo;
-import ec.edu.insteclrg.domain.Votante;
 import ec.edu.insteclrg.dto.GrupoDTO;
-import ec.edu.insteclrg.dto.VotanteDTO;
 import ec.edu.insteclrg.persistence.GrupoRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
 
@@ -51,6 +49,13 @@ public class GrupoService extends GenericCrudServiceImpl<Grupo, GrupoDTO> {
 		Grupo grupo = mapToDomain(dto);		
 		repository.save(grupo);		
 	}
-
 	
+	public void delete(GrupoDTO dto) {
+		Optional<Grupo> optionalGrupo = repository.findById(dto.getId());
+		if (!optionalGrupo.isPresent()) {
+			throw new ResourceNotFoundException(String.format("El Grupo %s no existe"));
+		}	
+		Grupo grupo=optionalGrupo.get();
+		repository.delete(grupo);
+	}	
 }
