@@ -12,8 +12,4 @@ import ec.edu.insteclrg.domain.TipoCandidato;
 public interface TipoCandidatoRepository extends JpaRepository<TipoCandidato, Long>  {
 
 	Optional<TipoCandidato> findById(long id);
-
-
-
-
 }

@@ -8,4 +8,6 @@ public class TipoCandidatoDTO {
 	private long id;
 
 	private String name;
+	
+	private InstitucionDTO institucion; 
 }

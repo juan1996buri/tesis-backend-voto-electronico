@@ -49,4 +49,18 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 		tipocandidato.setName(dto.getName());
 		repository.save(tipocandidato);
 		}
+	
+	public void delete(long id, TipoCandidatoDTO dto) {
+		TipoCandidatoDTO tipoDto = new TipoCandidatoDTO();
+		tipoDto.setId(id); 
+		Optional<TipoCandidato> optional = repository.findById(tipoDto.getId());
+		
+		if(optional.isPresent()){
+			dto.setId(optional.get().getId());
+			TipoCandidato candidato = mapToDomain(dto);
+			repository.delete(candidato);
+		} else {
+			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", id));
+		}
+	}
 }

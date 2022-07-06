@@ -62,4 +62,12 @@ public class TipoCandidatoController {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false,null), HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@DeleteMapping(path = "/{id}")
+	public ResponseEntity<Object> delete(@PathVariable Long id){
+		TipoCandidatoDTO dto = new TipoCandidatoDTO();
+		dto.setId(id);
+		service.delete(id, dto);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true,null), HttpStatus.CREATED);
+	}
 }

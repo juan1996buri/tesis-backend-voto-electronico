@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.TipoInstitucion;
+import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.dto.TipoInstitucionDTO;
 import ec.edu.insteclrg.service.crud.TipoInstitucionService;
 
@@ -63,15 +64,13 @@ public class TipoInstitucionController {
 		}
 	}
 	
+	@DeleteMapping(path = "/{id}")
+	public ResponseEntity<Object> delete(@PathVariable Long id) {
+
+		TipoInstitucionDTO dto = new TipoInstitucionDTO();
+		dto.setId(id);
+		service.delete(id, dto);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true,null), HttpStatus.CREATED);
+	}	
+	
 }
-
-
-
-
-
-
-
-
-
-
-

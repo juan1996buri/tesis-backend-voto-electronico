@@ -40,16 +40,10 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 		institucionDTO.setId(id);
 		Optional<Institucion> optional = repository.findById(institucionDTO.getId());
 		if(!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El votante %s no se encuentra registrado", id)); 
+			throw new ResourceNotFoundException(String.format("La intitucion no se encuentra registrado")); 
 		}
 		dto.setId(optional.get().getId());
 		Institucion institucion=mapToDomain(dto);
 		repository.save(institucion);
 	}
 }
-
-
-
-
-
-

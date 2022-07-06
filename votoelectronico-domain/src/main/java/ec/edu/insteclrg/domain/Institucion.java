@@ -21,7 +21,7 @@ public class Institucion {
 	@Column(updatable = false, nullable = false)
 	private long id; 
 	
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false, unique = false)
 	private String username;
 	
 	@Column
@@ -40,7 +40,7 @@ public class Institucion {
 	@Column
 	private String phone;
 	
-	@Column
+	@Column(unique = true)
 	private String ruc; 
 	
 	@ManyToOne

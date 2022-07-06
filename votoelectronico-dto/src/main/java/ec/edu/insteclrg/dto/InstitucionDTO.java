@@ -15,7 +15,7 @@ public class InstitucionDTO {
 
 	private String name; 
 
-    private CiudadDTO idCiudad;  
+    private CiudadDTO ciudad;  
 	
 	private String direction;
 
@@ -23,7 +23,7 @@ public class InstitucionDTO {
 
 	private String ruc; 
 
-	private TipoInstitucionDTO idTipoInstitucion;
+	private TipoInstitucionDTO tipoInstitucion;
 	
 	private Boolean isActive; 
 }
