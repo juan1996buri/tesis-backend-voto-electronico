@@ -48,7 +48,7 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 		}
 		dto.setId(optionalProv.get().getId());
 		Ciudad ciudad = mapToDomain(dto);
-		ciudad.setName(dto.getName());
+		ciudad.setNombre(dto.getNombre());
 		repository.save(ciudad);
 
 	}
@@ -57,12 +57,11 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 		CiudadDTO ciudadDTO = new CiudadDTO();
 		ciudadDTO.setId(id);
 		Optional<Ciudad> optional = repository.findById(ciudadDTO.getId());
-		;
 		if (optional.isPresent()) {
 
 			dto.setId(optional.get().getId());
 			Ciudad ciudad = mapToDomain(dto);
-			ciudad.setName(dto.getName());
+			ciudad.setNombre(dto.getNombre());
 			repository.delete(ciudad);
 		} else {
 			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", id));

@@ -62,7 +62,7 @@ public class ProvinciaService extends GenericCrudServiceImpl<Provincia, Provinci
 		if (optional.isPresent()) {
 			dto.setId(optional.get().getId());
 			Provincia provincia = mapToDomain(dto);
-			provincia.setName(dto.getName());
+			provincia.setNombre(dto.getNombre());
 			repository.delete(provincia);
 
 		} else {

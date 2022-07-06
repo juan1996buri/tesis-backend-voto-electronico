@@ -7,8 +7,8 @@ public class CiudadDTO {
 
 	private long id;
 
-	private String name;
-//relacion con  la provicncia
+	private String nombre;
+
 	private ProvinciaDTO provincia;
 
 }

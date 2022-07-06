@@ -7,5 +7,5 @@ public class ProvinciaDTO {
 
 	private long id;
 
-	private String name;
+	private String nombre;
 }

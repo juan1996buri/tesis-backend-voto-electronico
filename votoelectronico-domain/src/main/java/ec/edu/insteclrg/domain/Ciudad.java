@@ -16,17 +16,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-//@Table(name = "provincia")
 public class Ciudad {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique = true, nullable = false)
+	@Column(updatable = false, nullable = false)
 	private long id;
-	@Column(nullable = false)
-	private String name;
-
-	// relacion ManytoOne
+	@Column(nullable = false, unique = true)
+	private String nombre;
 	@ManyToOne
 	@JoinColumn(name = "provincia_id")
 	private Provincia provincia;
