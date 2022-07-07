@@ -1,5 +1,9 @@
 package ec.edu.insteclrg.service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -7,10 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.ApiException;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public abstract class GenericCrudServiceImpl<DOMAIN, DTO> implements GenericCrudService<DOMAIN, DTO> {
@@ -30,6 +30,17 @@ public abstract class GenericCrudServiceImpl<DOMAIN, DTO> implements GenericCrud
 	}
 
 	@Override
+	public void update(DTO dto) {
+		Optional<DOMAIN> optional = find(dto);
+		if (!optional.isPresent()) {
+			throw new ApiException(String.format("Registro %s no existe en el sistema", dto));
+		} else {
+			DOMAIN domainObject = mapToDomain(dto);
+			repository.save(domainObject);
+		}
+	}
+
+	@Override
 	public List<DTO> findAll(DTO dto) {
 		DOMAIN domain = mapToDomain(dto);
 		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreNullValues().withIgnorePaths("id");
@@ -39,4 +50,5 @@ public abstract class GenericCrudServiceImpl<DOMAIN, DTO> implements GenericCrud
 
 	@Override
 	public abstract DOMAIN mapToDomain(DTO dto);
+
 }
