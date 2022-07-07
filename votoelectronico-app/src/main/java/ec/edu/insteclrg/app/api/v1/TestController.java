@@ -32,9 +32,9 @@ public class TestController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
-	@PutMapping(path = "/{code}")
-	public ResponseEntity<Object> update(@PathVariable String code, @RequestBody TestDTO dto) {
-		service.update(code, dto);
+	@PutMapping
+	public ResponseEntity<Object> update(@RequestBody TestDTO dto) {
+		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
