@@ -1,5 +1,7 @@
 package ec.edu.insteclrg.domain;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,19 +12,27 @@ import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
-public class Grupo {
+public class Voto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private long id;
 	
-	@Column(unique = true,nullable = false)	
-	private String nombre;
-	
 	@ManyToOne
 	@JoinColumn(name = "junta_id")
-	private Junta junta;
+	private Lista lista;
+	
+	@ManyToOne
+	@JoinColumn(name = "votante_id")
+	private Votante votante;
+	
+	@ManyToOne
+	@JoinColumn(name = "procesoeleccion_id")
+	private ProcesoEleccion procesoEleccion;
+	
+	private LocalDateTime fechaRegistro;
 }

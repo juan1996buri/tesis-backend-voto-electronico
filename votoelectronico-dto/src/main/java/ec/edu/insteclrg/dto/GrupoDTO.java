@@ -7,7 +7,7 @@ public class GrupoDTO {
 	
 	private long id;	
 	
-	private String name;	
+	private String nombre;	
 	
 	private JuntaDTO junta;
 }

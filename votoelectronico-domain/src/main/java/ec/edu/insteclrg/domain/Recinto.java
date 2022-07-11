@@ -20,13 +20,13 @@ public class Recinto {
 	private long id;
 	
 	@Column
-	private String name;
+	private String nombre;
 	
 	@Column	
-	private String direction;
+	private String direccion;
 
 	@Column	
-	private String phone;
+	private String celular;
 	
 	@ManyToOne
 	@JoinColumn(name = "ciudad_id")
