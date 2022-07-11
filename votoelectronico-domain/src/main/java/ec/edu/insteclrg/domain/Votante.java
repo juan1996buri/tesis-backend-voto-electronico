@@ -29,26 +29,26 @@ public class Votante {
 	private String cedula;
 	
 	@Column	
-	private String name;
+	private String nombre;
 	
 	@Column(name = "last_nme")
-	private String lastName;
+	private String apellido;
 	
 	@Column	
-	private String email;
+	private String correo;
 	
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")
-	private byte[] photo;	
+	private byte[] imagen;	
 	
 	@Column	
-	private String phone;
+	private String celular;
 	
 	@Column	
-	private String code;
+	private String codigo;
 	
 	@Column
-	private Boolean IsActive;
+	private Boolean activo;
 	
 	
 	@ManyToOne
@@ -61,6 +61,6 @@ public class Votante {
 	
 	@ManyToOne
 	@JoinColumn(name = "sexo_id")
-	private Sexo Sexo;
+	private Sexo sexo;
 
 }

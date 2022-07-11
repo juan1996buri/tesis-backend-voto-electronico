@@ -31,7 +31,7 @@ public class VotoController {
 
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody VotoDTO dto) {
-		//dto.setFechaRegistro(LocalDateTime.now());
+		dto.setFechaRegistro(LocalDateTime.now());
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
