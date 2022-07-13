@@ -20,7 +20,4 @@ public class Provincia {
 	private long id;
 	@Column(nullable = false, unique = true)
 	private String nombre;
-	
-	
-
 }

@@ -38,7 +38,6 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 		return ciudad;
 	}
 
-
 	public void delete(long id, CiudadDTO dto) {
 		CiudadDTO ciudadDTO = new CiudadDTO();
 		ciudadDTO.setId(id);

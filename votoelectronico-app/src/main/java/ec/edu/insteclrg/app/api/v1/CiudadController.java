@@ -33,8 +33,8 @@ public class CiudadController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Object> update( @RequestBody CiudadDTO dto) {
-		service.update( dto);
+	public ResponseEntity<Object> update(@RequestBody CiudadDTO dto) {
+		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
@@ -68,6 +68,6 @@ public class CiudadController {
 		CiudadDTO dto = new CiudadDTO();
 		dto.setId(id);
 		service.delete(id, dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true,null), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 }
