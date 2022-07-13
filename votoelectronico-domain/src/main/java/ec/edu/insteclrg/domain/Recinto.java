@@ -17,33 +17,22 @@ public class Recinto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
-	private long id;
-	
-<<<<<<< HEAD
-	@Column
-	private String name;
-=======
+	private long id;	
+
 	@Column(nullable = false)
 	private String nombre;
->>>>>>> refs/remotes/origin/developer
-	
-<<<<<<< HEAD
-	@Column	
-	private String direction;
-=======
+
 	@Column(nullable = false)
 	private String direccion;
->>>>>>> refs/remotes/origin/developer
 
 	@Column	
-	private String phone;
+	private String celular;
 	
 	@ManyToOne
 	@JoinColumn(name = "ciudad_id")
-	private Ciudad ciudad;
-	
+	private Ciudad ciudad;	
 	
 	@ManyToOne
 	@JoinColumn(name = "institucion_id")
-	private Institucion Institucion;
+	private Institucion institucion;
 }
