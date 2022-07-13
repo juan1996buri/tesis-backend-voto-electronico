@@ -32,15 +32,9 @@ public class CiudadController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
-<<<<<<< HEAD
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody CiudadDTO dto) {
-		service.update(id, dto);
-=======
 	@PutMapping
 	public ResponseEntity<Object> update(@RequestBody CiudadDTO dto) {
 		service.update(dto);
->>>>>>> refs/remotes/origin/developer
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
