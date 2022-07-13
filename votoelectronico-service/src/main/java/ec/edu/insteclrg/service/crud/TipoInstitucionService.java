@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
-import ec.edu.insteclrg.domain.Ciudad;
-import ec.edu.insteclrg.domain.TipoCandidato;
 import ec.edu.insteclrg.domain.TipoInstitucion;
-import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.dto.TipoInstitucionDTO;
 import ec.edu.insteclrg.persistence.TipoInstitucionRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
@@ -39,34 +36,13 @@ public class TipoInstitucionService extends GenericCrudServiceImpl<TipoInstituci
 		TipoInstitucion tipoInstitucion = modelMapper.map(dto, TipoInstitucion.class);
 		return tipoInstitucion;
 	}
-
-<<<<<<< HEAD
-	public void update(long id, TipoInstitucionDTO dto) {
-		TipoInstitucionDTO tipoDTO = new TipoInstitucionDTO();
-		tipoDTO.setId(id);
-		Optional<TipoInstitucion> optional = repository.findById(tipoDTO.getId());
-		if (!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El código %s no se encuentra registrado", id));
-		}
-		dto.setId(optional.get().getId());
-		TipoInstitucion tipo=mapToDomain(dto);
-		repository.save(tipo);
-	}
 	
-=======
->>>>>>> refs/remotes/origin/developer
-	public void delete(long id, TipoInstitucionDTO dto) {
-		TipoInstitucionDTO tipoDto = new TipoInstitucionDTO();
-		tipoDto.setId(id);
-		Optional<TipoInstitucion> optional = repository.findById(tipoDto.getId());
-		;
-		if (optional.isPresent()) {
-
-			dto.setId(optional.get().getId());
-			TipoInstitucion tipoinstitucion = mapToDomain(dto);
-			repository.delete(tipoinstitucion);
-		} else {
-			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", id));
+	public void delete(TipoInstitucionDTO  dto) {
+		Optional<TipoInstitucion> optionalTipoInstitucion = repository.findById(dto.getId());
+		if (!optionalTipoInstitucion.isPresent()) {
+			throw new ResourceNotFoundException(String.format("El tipo de institucion %s no existe"));
 		}
-	}	
+		TipoInstitucion tipoinstitucion = optionalTipoInstitucion.get();
+		repository.delete(tipoinstitucion);
+	}
 }

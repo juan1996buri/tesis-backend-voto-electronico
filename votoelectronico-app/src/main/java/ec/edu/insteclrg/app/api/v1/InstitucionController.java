@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.Institucion;
 import ec.edu.insteclrg.dto.InstitucionDTO;
-import ec.edu.insteclrg.dto.TipoInstitucionDTO;
 import ec.edu.insteclrg.service.crud.InstitucionService;
 
 @RestController
@@ -33,19 +31,11 @@ public class InstitucionController {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
-<<<<<<< HEAD
-	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody InstitucionDTO dto){
-		service.update(id, dto);
-=======
 
 	@PutMapping
 	public ResponseEntity<Object> update(@RequestBody InstitucionDTO dto) {
 		service.update(dto);
->>>>>>> refs/remotes/origin/developer
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
-		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);	
 	}
 	
 	@GetMapping

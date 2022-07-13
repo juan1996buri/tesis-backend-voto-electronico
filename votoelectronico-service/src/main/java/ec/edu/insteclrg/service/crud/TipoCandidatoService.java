@@ -37,33 +37,12 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 		return tipo;
 	}
 
-<<<<<<< HEAD
-	public void update(Long id, TipoCandidatoDTO dto) {
-		TipoCandidatoDTO tipoDTO = new TipoCandidatoDTO();
-		tipoDTO.setId(id);
-		Optional<TipoCandidato> optional = repository.findById(tipoDTO.getId());
-		
-		if(!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El código %s no se encuentra registrado", id));
+	public void delete(TipoCandidatoDTO dto) {
+		Optional<TipoCandidato> optionalTipoCandidato = repository.findById(dto.getId());
+		if (!optionalTipoCandidato.isPresent()) {
+			throw new ResourceNotFoundException(String.format("El tipo candidato %s no existe"));
 		}
-		TipoCandidato tipocandidato = optional.get();
-		tipocandidato.setName(dto.getName());
-		repository.save(tipocandidato);
-		}
-	
-=======
->>>>>>> refs/remotes/origin/developer
-	public void delete(long id, TipoCandidatoDTO dto) {
-		TipoCandidatoDTO tipoDto = new TipoCandidatoDTO();
-		tipoDto.setId(id); 
-		Optional<TipoCandidato> optional = repository.findById(tipoDto.getId());
-		
-		if(optional.isPresent()){
-			dto.setId(optional.get().getId());
-			TipoCandidato candidato = mapToDomain(dto);
-			repository.delete(candidato);
-		} else {
-			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", id));
-		}
+		TipoCandidato tipoCandidato= optionalTipoCandidato.get();
+		repository.delete(tipoCandidato);
 	}
 }

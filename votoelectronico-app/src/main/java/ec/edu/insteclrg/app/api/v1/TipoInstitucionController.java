@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.TipoInstitucion;
-import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.dto.TipoInstitucionDTO;
 import ec.edu.insteclrg.service.crud.TipoInstitucionService;
 
@@ -33,19 +32,11 @@ public class TipoInstitucionController {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, false), HttpStatus.CREATED);	
 	}
-<<<<<<< HEAD
-	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable long id, @RequestBody TipoInstitucionDTO dto ){
-		service.update(id, dto);
-		return new ResponseEntity<> (new ApiResponseDTO<>(true, null), HttpStatus.CREATED);		
-=======
 
 	@PutMapping
 	public ResponseEntity<Object> update(@RequestBody TipoInstitucionDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
->>>>>>> refs/remotes/origin/developer
 	}
 	
 	@GetMapping
@@ -74,11 +65,9 @@ public class TipoInstitucionController {
 	
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
-
 		TipoInstitucionDTO dto = new TipoInstitucionDTO();
 		dto.setId(id);
-		service.delete(id, dto);
+		service.delete(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true,null), HttpStatus.CREATED);
-	}	
-	
+	}		
 }

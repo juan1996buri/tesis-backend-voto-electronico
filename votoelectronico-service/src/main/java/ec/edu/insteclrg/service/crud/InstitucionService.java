@@ -5,7 +5,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
 import ec.edu.insteclrg.domain.Institucion;
 import ec.edu.insteclrg.dto.InstitucionDTO;
 import ec.edu.insteclrg.persistence.InstitucionRepository;
@@ -34,19 +33,4 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 		Institucion domain=modelMapper.map(dto, Institucion.class);
 		return domain;
 	}
-<<<<<<< HEAD
-	
-	public void update(Long id,InstitucionDTO dto) {
-		InstitucionDTO institucionDTO= new InstitucionDTO();
-		institucionDTO.setId(id);
-		Optional<Institucion> optional = repository.findById(institucionDTO.getId());
-		if(!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("La intitucion no se encuentra registrado")); 
-		}
-		dto.setId(optional.get().getId());
-		Institucion institucion=mapToDomain(dto);
-		repository.save(institucion);
-	}
-=======
->>>>>>> refs/remotes/origin/developer
 }
