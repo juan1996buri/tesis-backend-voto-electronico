@@ -38,24 +38,6 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 		return ciudad;
 	}
 
-<<<<<<< HEAD
-	public void update(Long id, CiudadDTO dto) {
-		CiudadDTO ciudadDTO = new CiudadDTO();
-		ciudadDTO.setId(id);
-		Optional<Ciudad> optionalProv = repository.findById(ciudadDTO.getId());
-
-		if (!optionalProv.isPresent()) {
-			throw new ResourceNotFoundException(String.format(" el id %s no se encuentra registrado", id));
-		}
-		dto.setId(optionalProv.get().getId());
-		Ciudad ciudad = mapToDomain(dto);
-		ciudad.setNombre(dto.getNombre());
-		repository.save(ciudad);
-
-	}
-
-=======
->>>>>>> refs/remotes/origin/developer
 	public void delete(long id, CiudadDTO dto) {
 		CiudadDTO ciudadDTO = new CiudadDTO();
 		ciudadDTO.setId(id);
