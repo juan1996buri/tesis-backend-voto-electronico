@@ -19,10 +19,10 @@ public class Recinto {
 	@Column(updatable = false, nullable = false)
 	private long id;
 	
-	@Column
+	@Column(nullable = false)
 	private String nombre;
 	
-	@Column	
+	@Column(nullable = false)
 	private String direccion;
 
 	@Column	
@@ -36,6 +36,4 @@ public class Recinto {
 	@ManyToOne
 	@JoinColumn(name = "institucion_id")
 	private Institucion Institucion;
-
-
 }
