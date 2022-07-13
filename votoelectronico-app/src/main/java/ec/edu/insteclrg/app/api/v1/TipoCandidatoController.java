@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.TipoCandidato;
 import ec.edu.insteclrg.dto.TipoCandidatoDTO;
+import ec.edu.insteclrg.dto.TipoInstitucionDTO;
 import ec.edu.insteclrg.service.crud.TipoCandidatoService;
 
 @RestController
@@ -25,49 +26,48 @@ import ec.edu.insteclrg.service.crud.TipoCandidatoService;
 public class TipoCandidatoController {
 
 	@Autowired
-	TipoCandidatoService service;
-
+	TipoCandidatoService service; 
 	@PostMapping
-	public ResponseEntity<Object> save(@RequestBody TipoCandidatoDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+	public ResponseEntity<Object> save(@RequestBody TipoCandidatoDTO dto){
+		service.save(dto);	
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED) ;
 	}
-
+	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody TipoCandidatoDTO dto) {
+	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody TipoCandidatoDTO dto ) {
 		service.update(id, dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);	
 	}
-
+	
 	@GetMapping
-	public ResponseEntity<Object> findAll() {
+	public ResponseEntity<Object> findAll(){
 		List<TipoCandidatoDTO> list = service.findAll(new TipoCandidatoDTO());
-		if (!list.isEmpty()) {
+		if(!list.isEmpty()) {
 			ApiResponseDTO<List<TipoCandidatoDTO>> response = new ApiResponseDTO<>(true, list);
 			return (new ResponseEntity<Object>(response, HttpStatus.OK));
-		} else {
-			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
-		}
+		}else {
+			return new ResponseEntity<>(new ApiResponseDTO<>(false, null),HttpStatus.NOT_FOUND);
+		}			
 	}
-
+	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Object> find(@PathVariable long id) {
+	public ResponseEntity<Object> find(@PathVariable long id){
 		TipoCandidatoDTO tipoDTO = new TipoCandidatoDTO();
 		tipoDTO.setId(id);
 		Optional<TipoCandidato> tipo = service.find(tipoDTO);
-		if (tipo.isPresent()) {
+		if(tipo.isPresent()) {
 			ApiResponseDTO<TipoCandidato> response = new ApiResponseDTO<>(true, tipo.get());
-			return (new ResponseEntity<Object>(response, HttpStatus.OK));
+			return(new ResponseEntity<Object>(response, HttpStatus.OK));
 		} else {
-			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(new ApiResponseDTO<>(false,null), HttpStatus.NOT_FOUND);
 		}
 	}
-
+	
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id) {
+	public ResponseEntity<Object> delete(@PathVariable Long id){
 		TipoCandidatoDTO dto = new TipoCandidatoDTO();
 		dto.setId(id);
 		service.delete(id, dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true,null), HttpStatus.CREATED);
 	}
 }

@@ -11,19 +11,19 @@ public class VotanteDTO {
 	
 	private String cedula;    
 	
-	private String nombre;
+	private String name;
 	
-	private String apellido;
+	private String lastName;
 	
-	private String correo;
+	private String email;
 	
-	private byte[] imagen;	
+	private byte[] photo;	
 	
-	private String celular;
+	private String phone;
 	
-	private String codigo;
+	private String code;
 	
-	private Boolean activo;
+	private Boolean isActive;
 	
 	private GrupoDTO grupo;	
 	

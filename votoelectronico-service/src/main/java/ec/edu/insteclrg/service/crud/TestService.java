@@ -33,4 +33,5 @@ public class TestService extends GenericCrudServiceImpl<Test, TestDTO> {
 	public Test mapToDomain(TestDTO dto) {
 		return modelMapper.map(dto, Test.class);
 	}
+
 }

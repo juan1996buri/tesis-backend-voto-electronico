@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import org.aspectj.weaver.tools.Trace;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,26 +29,26 @@ public class Votante {
 	private String cedula;
 	
 	@Column	
-	private String nombre;
+	private String name;
 	
 	@Column(name = "last_nme")
-	private String apellido;
+	private String lastName;
 	
 	@Column	
-	private String correo;
+	private String email;
 	
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")
-	private byte[] imagen;	
+	private byte[] photo;	
 	
 	@Column	
-	private String celular;
+	private String phone;
 	
 	@Column	
-	private String codigo;
+	private String code;
 	
 	@Column
-	private Boolean activo;
+	private Boolean IsActive;
 	
 	
 	@ManyToOne
@@ -59,6 +61,6 @@ public class Votante {
 	
 	@ManyToOne
 	@JoinColumn(name = "sexo_id")
-	private Sexo sexo;
+	private Sexo Sexo;
 
 }

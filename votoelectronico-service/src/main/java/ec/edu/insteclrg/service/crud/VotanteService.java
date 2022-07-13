@@ -36,4 +36,17 @@ public class VotanteService extends GenericCrudServiceImpl<Votante, VotanteDTO> 
 		Votante domain = modelMapper.map(dto, Votante.class);
 		return domain;
 	}
+	
+	public void update(String cedula, VotanteDTO dto) {
+		VotanteDTO votanteDto = new VotanteDTO();
+		votanteDto.setCedula(cedula);
+		Optional<Votante> optionalVotante = repository.findByCedula(votanteDto.getCedula());
+		if (!optionalVotante.isPresent()) {
+			throw new ResourceNotFoundException(String.format("El votante %s no se encuentra registrado", cedula));
+		}
+		
+		dto.setId(optionalVotante.get().getId());
+		Votante votante=mapToDomain(dto);				
+		repository.save(votante);
+	}
 }

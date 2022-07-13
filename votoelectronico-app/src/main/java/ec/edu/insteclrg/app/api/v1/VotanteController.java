@@ -31,9 +31,9 @@ public class VotanteController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
-	@PutMapping
-	public ResponseEntity<Object> update(@RequestBody VotanteDTO dto) {
-		service.update(dto);
+	@PutMapping(path = "/{cedula}")
+	public ResponseEntity<Object> update(@PathVariable String cedula, @RequestBody VotanteDTO dto) {
+		service.update(cedula, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 

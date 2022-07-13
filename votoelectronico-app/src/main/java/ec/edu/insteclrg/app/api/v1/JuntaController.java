@@ -32,9 +32,9 @@ public class JuntaController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
-	@PutMapping
-	public ResponseEntity<Object> update(@RequestBody JuntaDTO dto) {
-		service.update(dto);
+	@PutMapping(path = "/{id}")
+	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody JuntaDTO dto) {
+		service.update(id, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 

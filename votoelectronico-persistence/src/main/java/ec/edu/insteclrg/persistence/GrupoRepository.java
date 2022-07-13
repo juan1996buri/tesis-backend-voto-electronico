@@ -9,5 +9,6 @@ import ec.edu.insteclrg.domain.Grupo;
 
 @Repository
 public interface GrupoRepository extends JpaRepository<Grupo, Long> {
-	Optional<Grupo> findByNombre(String nombre);
+	Optional<Grupo> findByName(String name);
+
 }

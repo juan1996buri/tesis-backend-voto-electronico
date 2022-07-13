@@ -8,11 +8,11 @@ public class RecintoDTO {
     
 	private long id;
 	
-	private String nombre;
+	private String name;
 	
-	private String direccion;
+	private String direction;
 
-	private String celular;
+	private String phone;
 	
 	private CiudadDTO ciudad;
 	

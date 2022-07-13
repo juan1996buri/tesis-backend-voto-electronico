@@ -19,8 +19,8 @@ public class Grupo {
 	@Column(updatable = false, nullable = false)
 	private long id;
 	
-	@Column(nullable = false)	
-	private String nombre;
+	@Column(unique = true,nullable = false)	
+	private String name;
 	
 	@ManyToOne
 	@JoinColumn(name = "junta_id")

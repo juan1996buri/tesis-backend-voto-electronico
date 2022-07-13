@@ -7,13 +7,13 @@ public class JuntaDTO {
     
 	private long id;
 	
-	private String numero;	
+	private String number;	
 		
-	private String presidente;
+	private String president;
 	
-	private String vicePresidente;
+	private String vicePresident;
 	
-	private String secretario;
+	private String secretary;
 	
 	private RecintoDTO recinto;
 }
