@@ -9,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-import org.aspectj.weaver.tools.Trace;
-
 import lombok.Getter;
 import lombok.Setter;
 

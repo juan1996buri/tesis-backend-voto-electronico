@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.Recinto;
-import ec.edu.insteclrg.dto.GrupoDTO;
 import ec.edu.insteclrg.dto.RecintoDTO;
 import ec.edu.insteclrg.service.crud.RecintoService;
 
