@@ -69,6 +69,5 @@ public class GrupoController {
 		dto.setId(id);
 		service.delete(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.OK);
-	}
-	
+	}	
 }

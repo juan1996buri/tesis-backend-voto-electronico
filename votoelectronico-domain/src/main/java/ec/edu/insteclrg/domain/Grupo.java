@@ -20,7 +20,7 @@ public class Grupo {
 	private long id;
 	
 	@Column(unique = true,nullable = false)	
-	private String name;
+	private String nombre;
 	
 	@ManyToOne
 	@JoinColumn(name = "junta_id")
