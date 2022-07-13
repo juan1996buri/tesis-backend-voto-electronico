@@ -36,18 +36,6 @@ public class JuntaService extends GenericCrudServiceImpl<Junta, JuntaDTO> {
 		Junta domain=modelMapper.map(dto, Junta.class);
 		return domain;
 	}
-
-	public void update(long id, JuntaDTO dto) {
-		JuntaDTO juntaDto = new JuntaDTO();
-		juntaDto.setId(id);		
-		Optional<Junta> optionalJunta = repository.findById(juntaDto.getId());
-		if (!optionalJunta.isPresent()) {
-			throw new ResourceNotFoundException(String.format("Esta junta %s no se encuentra registrado"));
-		}
-		dto.setId(id);
-		Junta junta = mapToDomain(dto);
-		repository.save(junta);
-	}
 	
 	public void delete(JuntaDTO dto) {
 		Optional<Junta> optionalJunta = repository.findById(dto.getId());
@@ -57,5 +45,4 @@ public class JuntaService extends GenericCrudServiceImpl<Junta, JuntaDTO> {
 		Junta junta=optionalJunta.get();
 		repository.delete(junta);
 	}
-
 }
