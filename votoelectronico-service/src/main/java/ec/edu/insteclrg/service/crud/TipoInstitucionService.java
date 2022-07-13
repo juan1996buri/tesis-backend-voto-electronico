@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
-import ec.edu.insteclrg.domain.Ciudad;
-import ec.edu.insteclrg.domain.TipoCandidato;
 import ec.edu.insteclrg.domain.TipoInstitucion;
-import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.dto.TipoInstitucionDTO;
 import ec.edu.insteclrg.persistence.TipoInstitucionRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;

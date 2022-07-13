@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.TipoInstitucion;
-import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.dto.TipoInstitucionDTO;
 import ec.edu.insteclrg.service.crud.TipoInstitucionService;
 
