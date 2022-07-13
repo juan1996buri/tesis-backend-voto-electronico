@@ -17,9 +17,9 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 
 	@Autowired
 	private TipoCandidatoRepository repository;
-	
-	ModelMapper modelMapper=new ModelMapper();
-	
+
+	ModelMapper modelMapper = new ModelMapper();
+
 	@Override
 	public Optional<TipoCandidato> find(TipoCandidatoDTO dto) {
 		return repository.findById(dto.getId());
@@ -28,7 +28,7 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 	@Override
 	public TipoCandidatoDTO mapToDto(TipoCandidato domain) {
 		TipoCandidatoDTO tipoDTO = modelMapper.map(domain, TipoCandidatoDTO.class);
- 		return tipoDTO;
+		return tipoDTO;
 	}
 
 	@Override
@@ -41,21 +41,21 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 		TipoCandidatoDTO tipoDTO = new TipoCandidatoDTO();
 		tipoDTO.setId(id);
 		Optional<TipoCandidato> optional = repository.findById(tipoDTO.getId());
-		
-		if(!optional.isPresent()) {
+
+		if (!optional.isPresent()) {
 			throw new ResourceNotFoundException(String.format("El código %s no se encuentra registrado", id));
 		}
 		TipoCandidato tipocandidato = optional.get();
 		tipocandidato.setName(dto.getName());
 		repository.save(tipocandidato);
-		}
-	
+	}
+
 	public void delete(long id, TipoCandidatoDTO dto) {
 		TipoCandidatoDTO tipoDto = new TipoCandidatoDTO();
-		tipoDto.setId(id); 
+		tipoDto.setId(id);
 		Optional<TipoCandidato> optional = repository.findById(tipoDto.getId());
-		
-		if(optional.isPresent()){
+
+		if (optional.isPresent()) {
 			dto.setId(optional.get().getId());
 			TipoCandidato candidato = mapToDomain(dto);
 			repository.delete(candidato);
