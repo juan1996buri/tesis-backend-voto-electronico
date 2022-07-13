@@ -39,19 +39,6 @@ public class ProvinciaService extends GenericCrudServiceImpl<Provincia, Provinci
 		return provincia;
 	}
 
-	public void update(long id, ProvinciaDTO dto) {
-		ProvinciaDTO provinciadto = new ProvinciaDTO();
-		provinciadto.setId(id);
-		Optional<Provincia> optionalProvincia = repository.findById(provinciadto.getId());
-		if (!optionalProvincia.isPresent()) {
-			throw new ResourceNotFoundException(String.format("Esta provincia %s no se encuentra registrado"));
-		}
-		dto.setId(id);
-		Provincia provincia = mapToDomain(dto);
-		repository.save(provincia);
-
-	}
-
 	public void delete(long id, ProvinciaDTO dto) {
 		ProvinciaDTO provinciaDTO = new ProvinciaDTO();
 		provinciaDTO.setId(id);
