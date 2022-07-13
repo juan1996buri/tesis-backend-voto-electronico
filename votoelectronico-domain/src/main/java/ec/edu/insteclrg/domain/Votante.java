@@ -22,17 +22,26 @@ public class Votante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
-	private long id;
-	
+	private long id;	
 	
 	@Column(unique = true,nullable = false)
 	private String cedula;
 	
+<<<<<<< HEAD
 	@Column	
 	private String name;
+=======
+	@Column(nullable = false)	
+	private String nombre;
+>>>>>>> refs/remotes/origin/developer
 	
+<<<<<<< HEAD
 	@Column(name = "last_nme")
 	private String lastName;
+=======
+	@Column(nullable = false)
+	private String apellido;
+>>>>>>> refs/remotes/origin/developer
 	
 	@Column	
 	private String email;
@@ -61,6 +70,10 @@ public class Votante {
 	
 	@ManyToOne
 	@JoinColumn(name = "sexo_id")
+<<<<<<< HEAD
 	private Sexo Sexo;
 
+=======
+	private Sexo sexo;
+>>>>>>> refs/remotes/origin/developer
 }

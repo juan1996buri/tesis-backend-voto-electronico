@@ -38,6 +38,7 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 		return ciudad;
 	}
 
+<<<<<<< HEAD
 	public void update(Long id, CiudadDTO dto) {
 		CiudadDTO ciudadDTO = new CiudadDTO();
 		ciudadDTO.setId(id);
@@ -53,6 +54,8 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 
 	}
 
+=======
+>>>>>>> refs/remotes/origin/developer
 	public void delete(long id, CiudadDTO dto) {
 		CiudadDTO ciudadDTO = new CiudadDTO();
 		ciudadDTO.setId(id);

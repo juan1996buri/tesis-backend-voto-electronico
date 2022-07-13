@@ -19,11 +19,21 @@ public class Recinto {
 	@Column(updatable = false, nullable = false)
 	private long id;
 	
+<<<<<<< HEAD
 	@Column
 	private String name;
+=======
+	@Column(nullable = false)
+	private String nombre;
+>>>>>>> refs/remotes/origin/developer
 	
+<<<<<<< HEAD
 	@Column	
 	private String direction;
+=======
+	@Column(nullable = false)
+	private String direccion;
+>>>>>>> refs/remotes/origin/developer
 
 	@Column	
 	private String phone;
@@ -36,6 +46,4 @@ public class Recinto {
 	@ManyToOne
 	@JoinColumn(name = "institucion_id")
 	private Institucion Institucion;
-
-
 }

@@ -37,6 +37,7 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 		return tipo;
 	}
 
+<<<<<<< HEAD
 	public void update(Long id, TipoCandidatoDTO dto) {
 		TipoCandidatoDTO tipoDTO = new TipoCandidatoDTO();
 		tipoDTO.setId(id);
@@ -50,6 +51,8 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 		repository.save(tipocandidato);
 		}
 	
+=======
+>>>>>>> refs/remotes/origin/developer
 	public void delete(long id, TipoCandidatoDTO dto) {
 		TipoCandidatoDTO tipoDto = new TipoCandidatoDTO();
 		tipoDto.setId(id); 

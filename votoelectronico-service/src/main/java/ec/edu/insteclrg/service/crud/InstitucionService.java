@@ -34,6 +34,7 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 		Institucion domain=modelMapper.map(dto, Institucion.class);
 		return domain;
 	}
+<<<<<<< HEAD
 	
 	public void update(Long id,InstitucionDTO dto) {
 		InstitucionDTO institucionDTO= new InstitucionDTO();
@@ -46,4 +47,6 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 		Institucion institucion=mapToDomain(dto);
 		repository.save(institucion);
 	}
+=======
+>>>>>>> refs/remotes/origin/developer
 }

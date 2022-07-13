@@ -27,5 +27,4 @@ public class Ciudad {
 	@ManyToOne
 	@JoinColumn(name = "provincia_id")
 	private Provincia provincia;
-
 }

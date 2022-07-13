@@ -33,10 +33,17 @@ public class InstitucionController {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
+<<<<<<< HEAD
 	
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody InstitucionDTO dto){
 		service.update(id, dto);
+=======
+
+	@PutMapping
+	public ResponseEntity<Object> update(@RequestBody InstitucionDTO dto) {
+		service.update(dto);
+>>>>>>> refs/remotes/origin/developer
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 		
 	}

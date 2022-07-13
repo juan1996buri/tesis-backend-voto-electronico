@@ -32,11 +32,19 @@ public class TipoCandidatoController {
 		service.save(dto);	
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED) ;
 	}
+<<<<<<< HEAD
 	
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody TipoCandidatoDTO dto ) {
 		service.update(id, dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);	
+=======
+
+	@PutMapping
+	public ResponseEntity<Object> update(@RequestBody TipoCandidatoDTO dto) {
+		service.update(dto);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+>>>>>>> refs/remotes/origin/developer
 	}
 	
 	@GetMapping

@@ -35,5 +35,4 @@ public class Junta {
 	@ManyToOne
 	@JoinColumn(name = "recinto_id")
 	private Recinto recinto;
-
 }

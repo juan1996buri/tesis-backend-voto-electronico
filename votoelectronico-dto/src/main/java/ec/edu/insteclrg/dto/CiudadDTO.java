@@ -10,5 +10,4 @@ public class CiudadDTO {
 	private String nombre;
 
 	private ProvinciaDTO provincia;
-
 }
