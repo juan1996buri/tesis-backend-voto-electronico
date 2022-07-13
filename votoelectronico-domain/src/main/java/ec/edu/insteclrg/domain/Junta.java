@@ -21,16 +21,16 @@ public class Junta {
 	private long id;
 	
 	@Column(nullable = false)
-	private String number;	
+	private String numero;	
 		
 	@Column
-	private String president;
+	private String presidente;
 	
 	@Column
-	private String vicePresident;
+	private String vicePresidente;
 	
 	@Column
-	private String secretary;
+	private String secretario;
 	
 	@ManyToOne
 	@JoinColumn(name = "recinto_id")

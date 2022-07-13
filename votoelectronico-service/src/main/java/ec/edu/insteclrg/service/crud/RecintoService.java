@@ -37,18 +37,6 @@ public class RecintoService extends GenericCrudServiceImpl<Recinto, RecintoDTO> 
 		return domain;
 	}
 
-	public void update(long id, RecintoDTO dto) {
-		RecintoDTO recintoDto = new RecintoDTO();
-		recintoDto.setId(id);
-		Optional<Recinto> optionalRecinto = repository.findById(recintoDto.getId());
-		if (!optionalRecinto.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El recinto %s no se encuentra registrado"));
-		}
-		dto.setId(id);
-		Recinto recinto = mapToDomain(dto);
-		repository.save(recinto);
-	}
-
 	public void delete(RecintoDTO dto) {
 		Optional<Recinto> optionalRecinto = repository.findById(dto.getId());
 		if (!optionalRecinto.isPresent()) {

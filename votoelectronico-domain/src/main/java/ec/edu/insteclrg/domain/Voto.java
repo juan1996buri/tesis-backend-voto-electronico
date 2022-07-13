@@ -1,5 +1,7 @@
 package ec.edu.insteclrg.domain;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,32 +12,27 @@ import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
-public class Recinto {
+public class Voto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private long id;
 	
-	@Column
-	private String nombre;
-	
-	@Column	
-	private String direccion;
-
-	@Column	
-	private String celular;
+	@ManyToOne
+	@JoinColumn(name = "junta_id")
+	private Lista lista;
 	
 	@ManyToOne
-	@JoinColumn(name = "ciudad_id")
-	private Ciudad ciudad;
-	
+	@JoinColumn(name = "votante_id")
+	private Votante votante;
 	
 	@ManyToOne
-	@JoinColumn(name = "institucion_id")
-	private Institucion Institucion;
-
-
+	@JoinColumn(name = "procesoeleccion_id")
+	private ProcesoEleccion procesoEleccion;
+	
+	private LocalDateTime fechaRegistro;
 }
