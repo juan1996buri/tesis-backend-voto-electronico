@@ -37,19 +37,6 @@ public class TipoCandidatoService extends GenericCrudServiceImpl<TipoCandidato, 
 		return tipo;
 	}
 
-	public void update(Long id, TipoCandidatoDTO dto) {
-		TipoCandidatoDTO tipoDTO = new TipoCandidatoDTO();
-		tipoDTO.setId(id);
-		Optional<TipoCandidato> optional = repository.findById(tipoDTO.getId());
-
-		if (!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El código %s no se encuentra registrado", id));
-		}
-		TipoCandidato tipocandidato = optional.get();
-		tipocandidato.setName(dto.getName());
-		repository.save(tipocandidato);
-	}
-
 	public void delete(long id, TipoCandidatoDTO dto) {
 		TipoCandidatoDTO tipoDto = new TipoCandidatoDTO();
 		tipoDto.setId(id);

@@ -35,16 +35,4 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 		Institucion domain = modelMapper.map(dto, Institucion.class);
 		return domain;
 	}
-
-	public void update(Long id, InstitucionDTO dto) {
-		InstitucionDTO institucionDTO = new InstitucionDTO();
-		institucionDTO.setId(id);
-		Optional<Institucion> optional = repository.findById(institucionDTO.getId());
-		if (!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("La intitucion no se encuentra registrado"));
-		}
-		dto.setId(optional.get().getId());
-		Institucion institucion = mapToDomain(dto);
-		repository.save(institucion);
-	}
 }

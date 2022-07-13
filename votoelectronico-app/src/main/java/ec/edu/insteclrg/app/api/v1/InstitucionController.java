@@ -32,9 +32,9 @@ public class InstitucionController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody InstitucionDTO dto) {
-		service.update(id, dto);
+	@PutMapping
+	public ResponseEntity<Object> update(@RequestBody InstitucionDTO dto) {
+		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 
 	}
