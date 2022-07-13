@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
-import ec.edu.insteclrg.domain.Ciudad;
 import ec.edu.insteclrg.domain.Provincia;
-import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.dto.ProvinciaDTO;
 import ec.edu.insteclrg.persistence.ProvinciaRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
@@ -39,19 +37,6 @@ public class ProvinciaService extends GenericCrudServiceImpl<Provincia, Provinci
 		Provincia provincia = modelMapper.map(dto, Provincia.class);
 
 		return provincia;
-	}
-
-	public void update(long id, ProvinciaDTO dto) {
-		ProvinciaDTO provinciadto = new ProvinciaDTO();
-		provinciadto.setId(id);
-		Optional<Provincia> optionalProvincia = repository.findById(provinciadto.getId());
-		if (!optionalProvincia.isPresent()) {
-			throw new ResourceNotFoundException(String.format("Esta provincia %s no se encuentra registrado"));
-		}
-		dto.setId(id);
-		Provincia provincia = mapToDomain(dto);
-		repository.save(provincia);
-
 	}
 
 	public void delete(long id, ProvinciaDTO dto) {
