@@ -10,14 +10,15 @@ import ec.edu.insteclrg.domain.Institucion;
 import ec.edu.insteclrg.dto.InstitucionDTO;
 import ec.edu.insteclrg.persistence.InstitucionRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
-@Service 
-public class InstitucionService extends GenericCrudServiceImpl<Institucion, InstitucionDTO>  {
+
+@Service
+public class InstitucionService extends GenericCrudServiceImpl<Institucion, InstitucionDTO> {
 
 	@Autowired
-	private InstitucionRepository repository; 
-	
-	ModelMapper modelMapper=new ModelMapper(); 
-	
+	private InstitucionRepository repository;
+
+	ModelMapper modelMapper = new ModelMapper();
+
 	@Override
 	public Optional<Institucion> find(InstitucionDTO dto) {
 		return repository.findById(dto.getId());
@@ -25,25 +26,25 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 
 	@Override
 	public InstitucionDTO mapToDto(Institucion domain) {
-		InstitucionDTO dto=modelMapper.map(domain, InstitucionDTO.class); 
+		InstitucionDTO dto = modelMapper.map(domain, InstitucionDTO.class);
 		return dto;
 	}
 
 	@Override
 	public Institucion mapToDomain(InstitucionDTO dto) {
-		Institucion domain=modelMapper.map(dto, Institucion.class);
+		Institucion domain = modelMapper.map(dto, Institucion.class);
 		return domain;
 	}
-	
-	public void update(Long id,InstitucionDTO dto) {
-		InstitucionDTO institucionDTO= new InstitucionDTO();
+
+	public void update(Long id, InstitucionDTO dto) {
+		InstitucionDTO institucionDTO = new InstitucionDTO();
 		institucionDTO.setId(id);
 		Optional<Institucion> optional = repository.findById(institucionDTO.getId());
-		if(!optional.isPresent()) {
-			throw new ResourceNotFoundException(String.format("La intitucion no se encuentra registrado")); 
+		if (!optional.isPresent()) {
+			throw new ResourceNotFoundException(String.format("La intitucion no se encuentra registrado"));
 		}
 		dto.setId(optional.get().getId());
-		Institucion institucion=mapToDomain(dto);
+		Institucion institucion = mapToDomain(dto);
 		repository.save(institucion);
 	}
 }

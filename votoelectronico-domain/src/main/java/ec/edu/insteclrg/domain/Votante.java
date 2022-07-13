@@ -20,16 +20,15 @@ public class Votante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
-	private long id;
-	
+	private long id;	
 	
 	@Column(unique = true,nullable = false)
 	private String cedula;
 	
-	@Column	
+	@Column(nullable = false)	
 	private String nombre;
 	
-	@Column(name = "last_nme")
+	@Column(nullable = false)
 	private String apellido;
 	
 	@Column	
@@ -60,5 +59,4 @@ public class Votante {
 	@ManyToOne
 	@JoinColumn(name = "sexo_id")
 	private Sexo sexo;
-
 }
