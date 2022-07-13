@@ -10,13 +10,14 @@ import ec.edu.insteclrg.domain.Lista;
 import ec.edu.insteclrg.dto.ListaDTO;
 import ec.edu.insteclrg.persistence.ListaRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
+
 @Service
 public class ListaService extends GenericCrudServiceImpl<Lista, ListaDTO> {
 
 	@Autowired
 	private ListaRepository repository;
 	private ModelMapper modelmapper = new ModelMapper();
-	
+
 	@Override
 	public Optional<Lista> find(ListaDTO dto) {
 		return repository.findById(dto.getId());
@@ -33,20 +34,22 @@ public class ListaService extends GenericCrudServiceImpl<Lista, ListaDTO> {
 		Lista domain = modelmapper.map(dtoObject, Lista.class);
 		return domain;
 	}
+
 	public void update(ListaDTO dto) {
-		//ListaDTO listaDto = new ListaDTO();
 		Optional<Lista> optionalLista = Optional.empty();
 		if (!optionalLista.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El procesoeleccions %s no se encuentra registrado"));
+			throw new ResourceNotFoundException(String.format("La lista %s no se encuentra registrado"));
 		}
 		Lista lista = mapToDomain(dto);
 		repository.save(lista);
 	}
 
-	@Override
-	public void delete(ListaDTO dtoObject) {
-		
-		
+	public void delete(ListaDTO dto) {
+		Optional<Lista> optionalLista = repository.findById(dto.getId());
+		if (!optionalLista.isPresent()) {
+			throw new ResourceNotFoundException(String.format("La lista %s no existe"));
+		}
+		Lista lista = optionalLista.get();
+		repository.delete(lista);
 	}
-
 }

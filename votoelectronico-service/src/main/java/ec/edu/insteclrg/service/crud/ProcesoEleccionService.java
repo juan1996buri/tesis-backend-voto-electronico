@@ -45,10 +45,15 @@ public class ProcesoEleccionService extends GenericCrudServiceImpl<ProcesoElecci
 		ProcesoEleccion procesoeleccion = mapToDomain(dto);
 		repository.save(procesoeleccion);
 	}
-
-	@Override
-	public void delete(ProcesoEleccionDTO dtoObject) {
-		
-		
+	
+	public void delete(ProcesoEleccionDTO dto) {
+		Optional<ProcesoEleccion> optionalProcesoEleccion = repository.findById(dto.getId());
+		if (!optionalProcesoEleccion.isPresent()) {
+			throw new ResourceNotFoundException(String.format("El recinto %s no existe"));
+		}
+		ProcesoEleccion proceso = optionalProcesoEleccion.get();
+		repository.delete(proceso);
 	}
-}
+	}
+
+
