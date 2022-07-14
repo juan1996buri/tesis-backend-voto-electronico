@@ -69,7 +69,7 @@ public class ProvinciaController {
 
 		ProvinciaDTO dto = new ProvinciaDTO();
 		dto.setId(id);
-		service.delete(id, dto);
+		service.delete(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
