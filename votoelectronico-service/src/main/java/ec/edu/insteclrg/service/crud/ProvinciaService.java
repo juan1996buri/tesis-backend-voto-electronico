@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.exception.ResourceNotFoundException;
-import ec.edu.insteclrg.domain.Ciudad;
 import ec.edu.insteclrg.domain.Provincia;
-import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.dto.ProvinciaDTO;
 import ec.edu.insteclrg.persistence.ProvinciaRepository;
 import ec.edu.insteclrg.service.GenericCrudServiceImpl;
@@ -54,22 +52,15 @@ public class ProvinciaService extends GenericCrudServiceImpl<Provincia, Provinci
 
 	}
 
-	public void delete(long id, ProvinciaDTO dto) {
-		ProvinciaDTO provinciaDTO = new ProvinciaDTO();
-		provinciaDTO.setId(id);
-		Optional<Provincia> optional = repository.findById(provinciaDTO.getId());
+	public void delete(ProvinciaDTO dto) {
+
+		Optional<Provincia> optional = repository.findById(dto.getId());
 
 		if (optional.isPresent()) {
-			dto.setId(optional.get().getId());
-			Provincia provincia = mapToDomain(dto);
-			provincia.setNombre(dto.getNombre());
-			repository.delete(provincia);
-
-		} else {
-			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", id));
-
+			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", dto));
 		}
-
+		Provincia provincia = optional.get();
+		repository.delete(provincia);
 	}
 
 }
