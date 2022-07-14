@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.Recinto;
-import ec.edu.insteclrg.dto.GrupoDTO;
 import ec.edu.insteclrg.dto.RecintoDTO;
 import ec.edu.insteclrg.service.crud.RecintoService;
 
@@ -34,9 +33,9 @@ public class RecintoController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable long id, @RequestBody RecintoDTO dto) {
-		service.update(id, dto);
+	@PutMapping
+	public ResponseEntity<Object> update(@RequestBody RecintoDTO dto) {
+		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
