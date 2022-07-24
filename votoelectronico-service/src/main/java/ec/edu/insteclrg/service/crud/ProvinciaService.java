@@ -43,7 +43,7 @@ public class ProvinciaService extends GenericCrudServiceImpl<Provincia, Provinci
 
 		Optional<Provincia> optional = repository.findById(dto.getId());
 
-		if (optional.isPresent()) {
+		if (!optional.isPresent()) {
 			throw new ResourceNotFoundException(String.format("Registro %s no existe en la base de datos", dto));
 		}
 		Provincia provincia = optional.get();
