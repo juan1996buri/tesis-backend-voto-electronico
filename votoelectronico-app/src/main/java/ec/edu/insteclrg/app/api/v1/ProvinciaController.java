@@ -21,7 +21,7 @@ import ec.edu.insteclrg.domain.Provincia;
 import ec.edu.insteclrg.dto.ProvinciaDTO;
 import ec.edu.insteclrg.service.crud.ProvinciaService;
 
-@CrossOrigin(origins="localhost:3000")
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/v1.0/provincia")
 public class ProvinciaController {
