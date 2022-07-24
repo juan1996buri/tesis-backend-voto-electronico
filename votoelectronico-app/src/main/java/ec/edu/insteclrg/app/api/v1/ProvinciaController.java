@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,8 @@ import ec.edu.insteclrg.domain.Provincia;
 import ec.edu.insteclrg.dto.ProvinciaDTO;
 import ec.edu.insteclrg.service.crud.ProvinciaService;
 
+//@CrossOrigin(origins="localhost:3000")
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/api/v1.0/provincia")
 public class ProvinciaController {
@@ -33,10 +36,9 @@ public class ProvinciaController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 
 	}
-
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody ProvinciaDTO dto) {
-		service.update(id, dto);
+	@PutMapping
+	public ResponseEntity<Object> update(@RequestBody	ProvinciaDTO dto) {
+		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
