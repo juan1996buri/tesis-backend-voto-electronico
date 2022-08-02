@@ -7,7 +7,7 @@ public class TipoCandidatoDTO {
 
 	private long id;
 
-	private String name;
+	private String nombre;
 	
 	private InstitucionDTO institucion; 
 }

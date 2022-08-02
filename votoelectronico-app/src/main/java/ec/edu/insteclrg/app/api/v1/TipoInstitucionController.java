@@ -23,14 +23,14 @@ import ec.edu.insteclrg.service.crud.TipoInstitucionService;
 @RestController
 @RequestMapping(value = "/api/v1.0/tipoInstitucion")
 public class TipoInstitucionController {
-	
+
 	@Autowired
-	TipoInstitucionService service; 
-	
+	private TipoInstitucionService service;
+
 	@PostMapping
-	public ResponseEntity<Object> save( @RequestBody TipoInstitucionDTO dto){
+	public ResponseEntity<Object> save(@RequestBody TipoInstitucionDTO dto) {
 		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, false), HttpStatus.CREATED);	
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, false), HttpStatus.CREATED);
 	}
 
 	@PutMapping
@@ -38,36 +38,36 @@ public class TipoInstitucionController {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<Object> findAll(){
+	public ResponseEntity<Object> findAll() {
 		List<TipoInstitucionDTO> list = service.findAll(new TipoInstitucionDTO());
-		if(!list.isEmpty()) {
-			ApiResponseDTO<List<TipoInstitucionDTO>>response = new ApiResponseDTO<>(true, list);
-			return(new ResponseEntity<Object>(response, HttpStatus.OK));
-		}else {
-		return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
+		if (!list.isEmpty()) {
+			ApiResponseDTO<List<TipoInstitucionDTO>> response = new ApiResponseDTO<>(true, list);
+			return (new ResponseEntity<Object>(response, HttpStatus.OK));
+		} else {
+			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
 		}
-	}  
-	
+	}
+
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Object> find(@PathVariable Long id){
+	public ResponseEntity<Object> find(@PathVariable Long id) {
 		TipoInstitucionDTO dto = new TipoInstitucionDTO();
 		dto.setId(id);
 		Optional<TipoInstitucion> tipoInstitucion = service.find(dto);
 		if (tipoInstitucion.isPresent()) {
 			ApiResponseDTO<TipoInstitucion> response = new ApiResponseDTO<>(true, tipoInstitucion.get());
-			return(new ResponseEntity<Object>(response, HttpStatus.OK));
-		}else {
+			return (new ResponseEntity<Object>(response, HttpStatus.OK));
+		} else {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
 		TipoInstitucionDTO dto = new TipoInstitucionDTO();
 		dto.setId(id);
 		service.delete(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true,null), HttpStatus.CREATED);
-	}		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+	}
 }

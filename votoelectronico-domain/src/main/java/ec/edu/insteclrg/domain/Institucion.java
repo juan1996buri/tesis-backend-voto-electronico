@@ -15,38 +15,38 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Institucion {
- 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
-	private long id; 
-	
+	private long id;
+
 	@Column(nullable = false, unique = false)
-	private String username;
-	
+	private String coreo;
+
 	@Column
-	private String password;
-	
+	private String contraseña;
+
 	@Column
-	private String name; 
-	
+	private String nombre;
+
 	@ManyToOne
 	@JoinColumn()
-	private Ciudad ciudad;  
-	
+	private Ciudad ciudad;
+
 	@Column
-	private String direction;
-	
+	private String direccion;
+
 	@Column
-	private String phone;
-	
+	private String telefono;
+
 	@Column(unique = true)
-	private String ruc; 
-	
+	private String ruc;
+
 	@ManyToOne
 	@JoinColumn()
 	private TipoInstitucion tipoinstitucion;
-	 	
+
 	@Column
-	private Boolean isActive; 
+	private Boolean esActivo;
 }

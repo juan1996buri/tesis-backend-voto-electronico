@@ -7,7 +7,7 @@ public class TipoInstitucionDTO {
 
 	private long id;
 
-	private String name;
+	private String nombre;
 
-	private String description;
+	private String descripcion;
 }

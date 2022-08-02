@@ -24,10 +24,10 @@ import ec.edu.insteclrg.service.crud.InstitucionService;
 public class InstitucionController {
 
 	@Autowired
-	private InstitucionService service; 
-	
+	private InstitucionService service;
+
 	@PostMapping
-	public ResponseEntity<Object> save(@RequestBody InstitucionDTO dto){
+	public ResponseEntity<Object> save(@RequestBody InstitucionDTO dto) {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
@@ -35,31 +35,30 @@ public class InstitucionController {
 	@PutMapping
 	public ResponseEntity<Object> update(@RequestBody InstitucionDTO dto) {
 		service.update(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);	
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<Object> findAll(){
-		List<InstitucionDTO> list= service.findAll(new InstitucionDTO());
-		if(!list.isEmpty()) {
+	public ResponseEntity<Object> findAll() {
+		List<InstitucionDTO> list = service.findAll(new InstitucionDTO());
+		if (!list.isEmpty()) {
 			ApiResponseDTO<List<InstitucionDTO>> response = new ApiResponseDTO<>(true, list);
-			return (new ResponseEntity<Object>(response,HttpStatus.OK));
-		}else {
+			return (new ResponseEntity<Object>(response, HttpStatus.OK));
+		} else {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Object> find(@PathVariable Long id){
+	public ResponseEntity<Object> find(@PathVariable Long id) {
 		InstitucionDTO dto = new InstitucionDTO();
 		dto.setId(id);
 		Optional<Institucion> optional = service.find(dto);
-		if(optional.isPresent()) {
+		if (optional.isPresent()) {
 			ApiResponseDTO<Institucion> response = new ApiResponseDTO<>(true, optional.get());
 			return (new ResponseEntity<Object>(response, HttpStatus.OK));
-		}else {
+		} else {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
-		}	
-     }
+		}
+	}
 }
-

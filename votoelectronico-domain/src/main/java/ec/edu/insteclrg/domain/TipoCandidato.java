@@ -21,11 +21,10 @@ public class TipoCandidato {
 	@Column(updatable = false, nullable = false)
 	private long id;
 
-
 	@Column(nullable = false)
-	private String name;
-	
+	private String nombre;
+
 	@ManyToOne
 	@JoinColumn()
-	private Institucion institucion; 
+	private Institucion institucion;
 }

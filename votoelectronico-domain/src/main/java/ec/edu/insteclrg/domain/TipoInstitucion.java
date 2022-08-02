@@ -20,8 +20,8 @@ public class TipoInstitucion {
 	private long id;
 
 	@Column(nullable = false, unique = true)
-	private String name;
+	private String nombre;
 
 	@Column(nullable = false)
-	private String description;
+	private String descripcion;
 }

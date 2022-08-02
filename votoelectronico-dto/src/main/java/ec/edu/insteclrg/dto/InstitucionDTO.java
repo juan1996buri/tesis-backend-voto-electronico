@@ -9,21 +9,21 @@ public class InstitucionDTO {
 
 	private long id; 
 
-	private String username;
+	private String coreo;
 	
-	private String password;
+	private String contraseña;
 
-	private String name; 
+	private String nombre; 
 
     private CiudadDTO ciudad;  
 	
-	private String direction;
+	private String direccion;
 
-	private String phone;
+	private String telefono;
 
 	private String ruc; 
 
 	private TipoInstitucionDTO tipoInstitucion;
 	
-	private Boolean isActive; 
+	private Boolean esActivo; 
 }
