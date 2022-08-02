@@ -21,13 +21,14 @@ import ec.edu.insteclrg.domain.Provincia;
 import ec.edu.insteclrg.dto.ProvinciaDTO;
 import ec.edu.insteclrg.service.crud.ProvinciaService;
 
-@CrossOrigin(origins="http://localhost:3000")
+//@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/api/v1.0/provincia")
 public class ProvinciaController {
 
 	@Autowired
-	ProvinciaService service;
+	private ProvinciaService service;
 
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody ProvinciaDTO dto) {
@@ -35,8 +36,9 @@ public class ProvinciaController {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 
 	}
+
 	@PutMapping
-	public ResponseEntity<Object> update(@RequestBody	ProvinciaDTO dto) {
+	public ResponseEntity<Object> update(@RequestBody ProvinciaDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}

@@ -21,12 +21,12 @@ import ec.edu.insteclrg.domain.Ciudad;
 import ec.edu.insteclrg.dto.CiudadDTO;
 import ec.edu.insteclrg.service.crud.CiudadService;
 
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/v1.0/ciudad")
 public class CiudadController {
 	@Autowired
-	CiudadService service;
+	private CiudadService service;
 
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody CiudadDTO dto) {
