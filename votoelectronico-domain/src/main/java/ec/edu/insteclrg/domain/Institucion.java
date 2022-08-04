@@ -22,7 +22,7 @@ public class Institucion {
 	private long id;
 
 	@Column(nullable = false, unique = false)
-	private String coreo;
+	private String correo;
 
 	@Column
 	private String contraseña;

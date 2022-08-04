@@ -1,7 +1,4 @@
 package ec.edu.insteclrg.dto;
-
-
-
 import lombok.Data;
 
 @Data
@@ -9,7 +6,7 @@ public class InstitucionDTO {
 
 	private long id; 
 
-	private String coreo;
+	private String correo;
 	
 	private String contraseña;
 
