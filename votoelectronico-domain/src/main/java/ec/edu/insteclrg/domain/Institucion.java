@@ -25,7 +25,7 @@ public class Institucion {
 	private String correo;
 
 	@Column
-	private String contraseña;
+	private String clave;
 
 	@Column
 	private String nombre;
