@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,8 @@ import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.Votante;
 import ec.edu.insteclrg.dto.VotanteDTO;
 import ec.edu.insteclrg.service.crud.VotanteService;
+
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/v1.0/votante")
 public class VotanteController {
