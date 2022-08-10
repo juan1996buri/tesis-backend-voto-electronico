@@ -51,10 +51,10 @@ public class InstitucionController {
 		}
 	}
 
-	@GetMapping(path = "/{id}")
-	public ResponseEntity<Object> find(@PathVariable Long id) {
+	@GetMapping(path = "/{correo}")
+	public ResponseEntity<Object> find(@PathVariable String correo) {
 		InstitucionDTO dto = new InstitucionDTO();
-		dto.setId(id);
+		dto.setCorreo(correo);
 		Optional<Institucion> optional = service.find(dto);
 		if (optional.isPresent()) {
 			ApiResponseDTO<Institucion> response = new ApiResponseDTO<>(true, optional.get());
