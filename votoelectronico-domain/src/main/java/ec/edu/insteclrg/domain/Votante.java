@@ -24,7 +24,6 @@ public class Votante {
 	@Column(unique = true,nullable = false)
 	private String cedula;
 	
-
 	@Column(nullable = false)	
 	private String nombre;
 

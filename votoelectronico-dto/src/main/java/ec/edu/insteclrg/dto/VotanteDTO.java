@@ -28,5 +28,4 @@ public class VotanteDTO {
 	private InstitucionDTO institucion; 
 
     private SexoDTO sexo; 
-	
 }
