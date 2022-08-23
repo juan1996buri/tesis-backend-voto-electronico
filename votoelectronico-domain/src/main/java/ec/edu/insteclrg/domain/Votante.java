@@ -53,4 +53,5 @@ public class Votante {
 	@ManyToOne
 	@JoinColumn(name = "sexo_id")
 	private Sexo sexo;
+
 }
