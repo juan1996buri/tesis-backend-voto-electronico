@@ -23,6 +23,9 @@ public class Institucion {
 
 	@Column(nullable = false, unique = false)
 	private String correo;
+	
+	@Column
+	private byte[] logo;
 
 	@Column
 	private String nombre;
