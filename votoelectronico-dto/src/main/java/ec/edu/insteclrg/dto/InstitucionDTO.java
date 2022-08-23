@@ -7,8 +7,6 @@ public class InstitucionDTO {
 	private long id; 
 
 	private String correo;
-	
-	private String clave;
 
 	private String nombre; 
 
