@@ -17,8 +17,6 @@ public class VotanteDTO {
 	
 	private String correo;
 	
-	private byte[] imagen;	
-	
 	private String celular;
 	
 	private String codigo;
