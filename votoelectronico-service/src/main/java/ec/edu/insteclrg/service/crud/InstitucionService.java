@@ -19,7 +19,7 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 	
 	@Override
 	public Optional<Institucion> find(InstitucionDTO dto) {
-		return repository.findById(dto.getId());
+		return repository.findByCorreo(dto.getCorreo());
 	}
 
 	@Override
