@@ -46,7 +46,5 @@ public class CiudadService extends GenericCrudServiceImpl<Ciudad, CiudadDTO> {
 		}
 		Ciudad ciudad = optional.get();
 		repository.delete(ciudad);
-
 	}
-
 }
