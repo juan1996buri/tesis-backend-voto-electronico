@@ -15,7 +15,7 @@ public class InstitucionService extends GenericCrudServiceImpl<Institucion, Inst
 	@Autowired
 	private InstitucionRepository repository; 
 	
-	ModelMapper modelMapper=new ModelMapper(); 
+	private ModelMapper modelMapper=new ModelMapper(); 
 	
 	@Override
 	public Optional<Institucion> find(InstitucionDTO dto) {

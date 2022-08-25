@@ -45,7 +45,7 @@ public class Institucion {
 
 	@ManyToOne
 	@JoinColumn()
-	private TipoInstitucion tipoinstitucion;
+	private TipoInstitucion tipoInstitucion;
 
 	@Column
 	private Boolean activo;
