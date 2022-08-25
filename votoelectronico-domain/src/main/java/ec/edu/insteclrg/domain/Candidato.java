@@ -36,8 +36,7 @@ public class Candidato {
 	
 	@ManyToOne
 	@JoinColumn(name = "proceso_eleccion_id")
-	private ProcesoEleccion procesoEleccion;
-	
+	private ProcesoEleccion procesoEleccion;	
 	
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")
