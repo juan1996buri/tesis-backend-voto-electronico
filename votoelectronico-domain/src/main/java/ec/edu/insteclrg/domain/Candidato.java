@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -14,44 +15,32 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Votante {
-	
+public class Candidato {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private long id;	
 	
-	@Column(unique = true,nullable = false)
-	private String cedula;
-	
-	@Column(nullable = false)	
-	private String nombre;
-
-	@Column(nullable = false)
-	private String apellido;
-	
-	@Column	
-	private String correo;
-	
-	@Column	
-	private String celular;
-	
-	@Column	
-	private String codigo;
-	
-	@Column
-	private Boolean activo;	
+	@ManyToOne
+	@JoinColumn(name = "votante_id")
+	private Votante votante;
 	
 	@ManyToOne
-	@JoinColumn(name = "grupo_id")
-	private Grupo grupo;
+	@JoinColumn(name = "tipo_candidato_id")
+	private TipoCandidato tipoCandidato;
 	
 	@ManyToOne
-	@JoinColumn(name = "institucion_id")
-	private Institucion institucion;
+	@JoinColumn(name = "lista_id")
+	private Lista lista;
 	
 	@ManyToOne
-	@JoinColumn(name = "sexo_id")
-	private Sexo sexo;
-
+	@JoinColumn(name = "proceso_eleccion_id")
+	private ProcesoEleccion procesoEleccion;
+	
+	
+	@Lob
+	@Column(columnDefinition = "LONGBLOB")
+	private byte[] imagen;	
 }
+
