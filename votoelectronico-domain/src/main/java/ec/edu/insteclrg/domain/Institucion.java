@@ -20,8 +20,8 @@ public class Institucion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
 	private long id;
-
-	@Column(nullable = false, unique = false)
+	
+	@Column
 	private String correo;
 	
 	@Column
@@ -40,7 +40,7 @@ public class Institucion {
 	@Column
 	private String telefono;
 
-	@Column(unique = true)
+	@Column(nullable = false, unique = true)
 	private String ruc;
 
 	@ManyToOne
@@ -48,5 +48,5 @@ public class Institucion {
 	private TipoInstitucion tipoinstitucion;
 
 	@Column
-	private Boolean esActivo;
+	private Boolean activo;
 }

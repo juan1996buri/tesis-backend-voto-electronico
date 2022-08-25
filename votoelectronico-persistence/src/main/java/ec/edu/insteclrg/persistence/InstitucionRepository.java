@@ -10,5 +10,5 @@ import ec.edu.insteclrg.domain.Institucion;
 @Repository
 public interface  InstitucionRepository extends JpaRepository<Institucion, Long>{
 
-	Optional<Institucion> findByCorreo(String correo);
+	Optional<Institucion> findByRuc(String ruc);
 }

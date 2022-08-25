@@ -22,5 +22,5 @@ public class InstitucionDTO {
 
 	private TipoInstitucionDTO tipoInstitucion;
 	
-	private Boolean esActivo; 
+	private Boolean activo; 
 }
