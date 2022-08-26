@@ -8,7 +8,7 @@ public class InstitucionDTO {
 
 	private String correo;
 	
-	private byte[] logo;
+	private String logo;
 
 	private String nombre; 
 

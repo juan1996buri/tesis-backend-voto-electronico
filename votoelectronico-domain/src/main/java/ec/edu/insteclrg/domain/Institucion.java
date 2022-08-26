@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -24,8 +25,9 @@ public class Institucion {
 	@Column
 	private String correo;
 	
-	@Column
-	private byte[] logo;
+	@Lob
+	@Column(columnDefinition = "LONGBLOB")
+	private String logo;
 
 	@Column
 	private String nombre;
