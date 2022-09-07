@@ -19,9 +19,8 @@ public class Votante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false, nullable = false)
-	private long id;	
+	private long id;		
 	
-	@Column(unique = true,nullable = false)
 	private String cedula;
 	
 	@Column(nullable = false)	

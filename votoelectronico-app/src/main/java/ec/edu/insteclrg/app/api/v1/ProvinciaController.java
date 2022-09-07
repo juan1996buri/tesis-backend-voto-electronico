@@ -3,6 +3,8 @@ package ec.edu.insteclrg.app.api.v1;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,7 @@ import ec.edu.insteclrg.domain.Provincia;
 import ec.edu.insteclrg.dto.ProvinciaDTO;
 import ec.edu.insteclrg.service.crud.ProvinciaService;
 
-//@CrossOrigin(origins="http://localhost:3000")
-@CrossOrigin("*")
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/v1.0/provincia")
 public class ProvinciaController {
@@ -31,6 +32,7 @@ public class ProvinciaController {
 	private ProvinciaService service;
 
 	@PostMapping
+	@RolesAllowed("ROLE_ADMIN")
 	public ResponseEntity<Object> save(@RequestBody ProvinciaDTO dto) {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
@@ -38,6 +40,7 @@ public class ProvinciaController {
 	}
 
 	@PutMapping
+	@RolesAllowed("ROLE_ADMIN")
 	public ResponseEntity<Object> update(@RequestBody ProvinciaDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
@@ -68,6 +71,7 @@ public class ProvinciaController {
 	}
 
 	@DeleteMapping(path = "/{id}")
+	@RolesAllowed("ROLE_ADMIN")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
 
 		ProvinciaDTO dto = new ProvinciaDTO();

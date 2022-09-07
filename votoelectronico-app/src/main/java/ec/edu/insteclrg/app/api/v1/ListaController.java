@@ -29,13 +29,13 @@ public class ListaController {
 	@PostMapping
 	public ResponseEntity<Object> guardar(@RequestBody ListaDTO dto) {
 		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Lista guardada con exito"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@PutMapping
 	public ResponseEntity<Object> actualizar(@RequestBody ListaDTO dto) {
 		service.update(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Lista actualizada con exito"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping

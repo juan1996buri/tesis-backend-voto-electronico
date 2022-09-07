@@ -3,6 +3,8 @@ package ec.edu.insteclrg.app.api.v1;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,22 +27,26 @@ import ec.edu.insteclrg.service.crud.JuntaService;
 @RestController
 @RequestMapping(value = "/api/v1.0/junta")
 public class JuntaController {
+	
 	@Autowired
 	private JuntaService service;
 	
 	@PostMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> save(@RequestBody JuntaDTO dto) {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@PutMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> update(@RequestBody JuntaDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> findAll() {
 		List<JuntaDTO> list = service.findAll(new JuntaDTO());
 		if (!list.isEmpty()) {
@@ -52,6 +58,7 @@ public class JuntaController {
 	}
 
 	@GetMapping(path = "/{id}")
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> find(@PathVariable Long id) {
 		JuntaDTO dto = new JuntaDTO();
 		dto.setId(id);
@@ -65,6 +72,7 @@ public class JuntaController {
 	}
 	
 	@DeleteMapping(path = "/{id}")
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
 		JuntaDTO dto = new JuntaDTO();
 		dto.setId(id);

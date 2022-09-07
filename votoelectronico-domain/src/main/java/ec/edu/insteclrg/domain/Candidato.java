@@ -40,6 +40,6 @@ public class Candidato {
 	
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")
-	private byte[] imagen;	
+	private String imagen;
 }
 

@@ -15,5 +15,5 @@ public class CandidatoDTO {
 	
 	private ProcesoEleccionDTO procesoEleccion;
 		
-	private byte[] imagen;	
+	private String imagen;	
 }

@@ -7,7 +7,7 @@ public class ListaDTO {
 
 	private long id;
 
-	private byte[] logo;
+	private String logo;
 
 	private String nombre;
 

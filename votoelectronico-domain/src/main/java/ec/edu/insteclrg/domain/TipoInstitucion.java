@@ -22,6 +22,6 @@ public class TipoInstitucion {
 	@Column(nullable = false, unique = true)
 	private String nombre;
 
-	@Column(nullable = false)
+	@Column
 	private String descripcion;
 }

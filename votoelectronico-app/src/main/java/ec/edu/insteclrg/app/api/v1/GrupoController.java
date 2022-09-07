@@ -3,6 +3,8 @@ package ec.edu.insteclrg.app.api.v1;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,18 +32,21 @@ public class GrupoController {
 	private GrupoService service;
 	
 	@PostMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> save(@RequestBody GrupoDTO dto) {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@PutMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> update(@RequestBody GrupoDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> findAll() {
 		List<GrupoDTO> list = service.findAll(new GrupoDTO());
 		if (!list.isEmpty()) {
@@ -53,6 +58,7 @@ public class GrupoController {
 	}
 
 	@GetMapping(path = "/{id}")
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> find(@PathVariable Long id) {
 		GrupoDTO dto = new GrupoDTO();
 		dto.setId(id);

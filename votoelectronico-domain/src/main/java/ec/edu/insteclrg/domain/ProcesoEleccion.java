@@ -27,7 +27,7 @@ public class ProcesoEleccion {
 	@Column(nullable = true)
 	private LocalDateTime fechafinal;
 
-	@Column(nullable = false)
+	@Column
 	private Boolean activo;
 
 	@Column(nullable = false)

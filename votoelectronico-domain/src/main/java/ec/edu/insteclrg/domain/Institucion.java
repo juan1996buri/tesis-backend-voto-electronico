@@ -33,7 +33,7 @@ public class Institucion {
 	private String nombre;
 
 	@ManyToOne
-	@JoinColumn()
+	@JoinColumn
 	private Ciudad ciudad;
 
 	@Column
@@ -46,7 +46,7 @@ public class Institucion {
 	private String ruc;
 
 	@ManyToOne
-	@JoinColumn()
+	@JoinColumn
 	private TipoInstitucion tipoInstitucion;
 
 	@Column

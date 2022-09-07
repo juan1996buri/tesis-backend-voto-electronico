@@ -35,17 +35,7 @@ public class ProcesoEleccionService extends GenericCrudServiceImpl<ProcesoElecci
 	public Optional<ProcesoEleccion> find(ProcesoEleccionDTO dtoObject) {
 		return repository.findById(dtoObject.getId());
 	}
-
-	public void update(ProcesoEleccionDTO dto) {
-		ProcesoEleccionDTO procesoEleccionDto = new ProcesoEleccionDTO();
-		Optional<ProcesoEleccion> optionalProcesoEleccion = repository.findById(procesoEleccionDto.getId());
-		if (!optionalProcesoEleccion.isPresent()) {
-			throw new ResourceNotFoundException(String.format("El procesoeleccion %s no se encuentra registrado"));
-		}
-		ProcesoEleccion procesoeleccion = mapToDomain(dto);
-		repository.save(procesoeleccion);
-	}
-	
+		
 	public void delete(ProcesoEleccionDTO dto) {
 		Optional<ProcesoEleccion> optionalProcesoEleccion = repository.findById(dto.getId());
 		if (!optionalProcesoEleccion.isPresent()) {
@@ -54,6 +44,6 @@ public class ProcesoEleccionService extends GenericCrudServiceImpl<ProcesoElecci
 		ProcesoEleccion proceso = optionalProcesoEleccion.get();
 		repository.delete(proceso);
 	}
-	}
+}
 
 

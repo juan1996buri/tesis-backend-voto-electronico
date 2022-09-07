@@ -29,13 +29,13 @@ public class ProcesoEleccionController {
 	@PostMapping
 	public ResponseEntity<Object> guardar(@RequestBody ProcesoEleccionDTO dto) {
 		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Proceso guardado con exito"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@PutMapping
 	public ResponseEntity<Object> actualizar(@RequestBody ProcesoEleccionDTO dto) {
 		service.update(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Proceso actualizado con exito"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping

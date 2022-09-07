@@ -4,6 +4,8 @@ import java.util.List;
 
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,18 +33,21 @@ public class RecintoController {
 	private RecintoService service;
 	
 	@PostMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> save(@RequestBody RecintoDTO dto) {
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@PutMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> update(@RequestBody RecintoDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> findAll() {
 		List<RecintoDTO> list = service.findAll(new RecintoDTO());
 		if (!list.isEmpty()) {
@@ -54,6 +59,7 @@ public class RecintoController {
 	}
 
 	@GetMapping(path = "/{id}")
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> find(@PathVariable Long id) {
 		RecintoDTO dto = new RecintoDTO();
 		dto.setId(id);

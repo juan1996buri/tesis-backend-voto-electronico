@@ -35,15 +35,6 @@ public class ListaService extends GenericCrudServiceImpl<Lista, ListaDTO> {
 		return domain;
 	}
 
-	public void update(ListaDTO dto) {
-		Optional<Lista> optionalLista = Optional.empty();
-		if (!optionalLista.isPresent()) {
-			throw new ResourceNotFoundException(String.format("La lista %s no se encuentra registrado"));
-		}
-		Lista lista = mapToDomain(dto);
-		repository.save(lista);
-	}
-
 	public void delete(ListaDTO dto) {
 		Optional<Lista> optionalLista = repository.findById(dto.getId());
 		if (!optionalLista.isPresent()) {

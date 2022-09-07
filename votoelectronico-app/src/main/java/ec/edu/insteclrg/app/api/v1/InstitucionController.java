@@ -3,6 +3,8 @@ package ec.edu.insteclrg.app.api.v1;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,17 +32,20 @@ public class InstitucionController {
 
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody InstitucionDTO dto) {
+		dto.setActivo(true);
 		service.save(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@PutMapping
+	@RolesAllowed({"ROLE_INSTITUTE","ROLE_ADMIN"})
 	public ResponseEntity<Object> update(@RequestBody InstitucionDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping
+	@RolesAllowed("ROLE_ADMIN")
 	public ResponseEntity<Object> findAll() {
 		List<InstitucionDTO> list = service.findAll(new InstitucionDTO());
 		if (!list.isEmpty()) {
