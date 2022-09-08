@@ -31,7 +31,7 @@ public class ProcesoEleccion {
 	private Boolean activo;
 
 	@Column(nullable = false)
-	private String nombreproceso;
+	private String nombre;
 
 	@ManyToOne()
 	@JoinColumn(name = "institucion_id")

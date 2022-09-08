@@ -14,7 +14,7 @@ public class ProcesoEleccionDTO {
 	
 	private Boolean activo;
 	
-	private String nombreproceso;
+	private String nombre;
 	
 	private InstitucionDTO institucion;
 }

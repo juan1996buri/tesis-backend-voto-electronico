@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
 import ec.edu.insteclrg.domain.Votante;
-import ec.edu.insteclrg.dto.VotanteCodigoDTO;
 import ec.edu.insteclrg.dto.VotanteDTO;
 import ec.edu.insteclrg.service.crud.VotanteService;
 
@@ -76,7 +75,7 @@ public class VotanteController {
 	}
 	
 	@GetMapping(path = "/codigo/{id}")
-	public ResponseEntity<Object> codigo(@PathVariable long id) {
+	public ResponseEntity<Object> codigo(@PathVariable String id) {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.generarIdentificador(id)), HttpStatus.CREATED);		
 	}
 	

@@ -30,9 +30,9 @@ public class Lista {
 	private String nombre;
 
 	@Column
-	private Boolean actio;
+	private Boolean activo;
 
 	@ManyToOne
 	@JoinColumn(name = "procesoeleccion_id")
-	private ProcesoEleccion procesoeleccion;
+	private ProcesoEleccion procesoEleccion;
 }

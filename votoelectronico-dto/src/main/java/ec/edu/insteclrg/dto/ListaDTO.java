@@ -13,5 +13,5 @@ public class ListaDTO {
 
 	private Boolean activo;
 
-	private ProcesoEleccionDTO procesoeleccion;
+	private ProcesoEleccionDTO procesoEleccion;
 }
