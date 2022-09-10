@@ -21,14 +21,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import ec.edu.insteclrg.persistence.UserRepository;
 
-
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = false, securedEnabled = false, jsr250Enabled = true)
 public class ApplicationSecurityConfig {
 
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
 	private JwtTokenFilter jwtTokenFilter;
 
@@ -59,13 +58,16 @@ public class ApplicationSecurityConfig {
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-		http.authorizeRequests().antMatchers("/api/v1.0/usuario/**", "/api/v1.0/provincia/**", "/api/v1.0/ciudad/**","/api/v1.0/tipoInstitucion/**","/api/v1.0/institucion/**").permitAll().anyRequest()
-				.authenticated();
+		http.authorizeRequests()
+				.antMatchers("/api/v1.0/usuario/**", "/api/v1.0/provincia/**", "/api/v1.0/ciudad/**",
+						"/api/v1.0/tipoInstitucion/**", "/api/v1.0/institucion/**", "/api/v1.0/votante/**",
+						"/api/v1.0/voto/**", "/api/v1.0/lista/**", "/api/v1.0/candidato/**", "/api/v1.0/voto/**")
+				.permitAll().anyRequest().authenticated();
 
 		http.exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
 		});
-		
+
 		http.cors(Customizer.withDefaults());
 
 		http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

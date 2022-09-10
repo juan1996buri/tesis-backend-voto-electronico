@@ -1,10 +1,8 @@
 package ec.edu.insteclrg.service.crud;
 
-import java.util.HashSet;
-import java.util.List;
+
 import java.util.Optional;
 import java.util.Random;
-import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,34 +57,12 @@ public class VotanteService extends GenericCrudServiceImpl<Votante, VotanteDTO> 
 		return codigoValido;
 	}
 
-	/*
-	 * public String generarIdentificador(VotanteCodigoDTO dto) { Set<Integer>
-	 * codigosExistentes = new HashSet<>(); List<Votante> votantes =
-	 * repository.findByAllId(idInstitucion);
-	 * 
-	 * String idIns = String.valueOf(idInstitucion);
-	 * 
-	 * for (int i = 0; i < votantes.size(); i++) { if
-	 * (votantes.get(i).getCodigo()!=null) { int tamano =
-	 * votantes.get(i).getCodigo().length() - idIns.length(); if (tamano == 8) {
-	 * codigosExistentes.add(Integer.parseInt(votantes.get(i).getCodigo().substring(
-	 * 0, votantes.get(i).getCodigo().length() - idIns.length()))); } }
-	 * 
-	 * }
-	 * 
-	 * Random r = new Random(); boolean existe = false; int codigoValido = 0;
-	 * 
-	 * while (codigosExistentes.size() < 99999999 && existe == false) { int
-	 * codigoGenerado = r.nextInt(90000000) + 10000000; if
-	 * (!codigosExistentes.contains(codigoGenerado)) { codigoValido =
-	 * codigoGenerado; codigosExistentes.add(codigoGenerado); existe = true; } }
-	 * return String.valueOf(codigoValido) + idInstitucion; }
-	 */
-
-	public VotanteDTO logear(String codigo) {
+	public VotanteDTO login(String codigo) {
 		Optional<Votante> optional = repository.findByCodigo(codigo);
 		if (optional.isPresent()) {
-			return mapToDto(optional.get());
+			VotanteDTO dto=mapToDto(optional.get());
+			dto.setCodigo("");
+			return dto;
 		} else {
 			throw new ApiException(String.format("Registro %s no existe en el sistema", codigo));
 		}

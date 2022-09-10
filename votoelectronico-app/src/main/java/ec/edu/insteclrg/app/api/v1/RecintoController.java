@@ -24,19 +24,18 @@ import ec.edu.insteclrg.domain.Recinto;
 import ec.edu.insteclrg.dto.RecintoDTO;
 import ec.edu.insteclrg.service.crud.RecintoService;
 
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/v1.0/recinto")
 public class RecintoController {
-	
+
 	@Autowired
 	private RecintoService service;
-	
+
 	@PostMapping
 	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> save(@RequestBody RecintoDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto)), HttpStatus.CREATED);
 	}
 
 	@PutMapping
@@ -71,7 +70,7 @@ public class RecintoController {
 			return new ResponseEntity<>(new ApiResponseDTO<>(false, null), HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
 		RecintoDTO dto = new RecintoDTO();

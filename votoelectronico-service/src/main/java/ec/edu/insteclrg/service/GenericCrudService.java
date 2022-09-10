@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface GenericCrudService<DOMAIN, DTO> {
 
-	public void save(DTO dto);
+	public DTO save(DTO dto);
 
 	public void update(DTO dto);
 	

@@ -32,12 +32,15 @@ public class VotanteController {
 	private VotanteService service;
 
 	@PostMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> save(@RequestBody VotanteDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true,service.save(dto)), HttpStatus.CREATED);
 	}
-
+	
+	
 	@PutMapping
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> update(@RequestBody VotanteDTO dto) {
 		service.update(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
@@ -68,13 +71,14 @@ public class VotanteController {
 		}
 	}
 	
-	@GetMapping(path = "/logeo/{codigo}")
+	@GetMapping(path = "/login/{codigo}")
 	public ResponseEntity<Object> logeo(@PathVariable String codigo) {		
-			return new ResponseEntity<>(new ApiResponseDTO<>(true, service.logear(codigo)), HttpStatus.OK);
+			return new ResponseEntity<>(new ApiResponseDTO<>(true, service.login(codigo)), HttpStatus.OK);
 		
 	}
 	
 	@GetMapping(path = "/codigo/{id}")
+	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> codigo(@PathVariable String id) {
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.generarIdentificador(id)), HttpStatus.CREATED);		
 	}
@@ -86,6 +90,5 @@ public class VotanteController {
 		dto.setId(id);
 		service.delete(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.OK);
-	}
-	
+	}	
 }

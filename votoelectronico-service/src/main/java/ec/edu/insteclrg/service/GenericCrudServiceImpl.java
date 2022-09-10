@@ -19,11 +19,11 @@ public abstract class GenericCrudServiceImpl<DOMAIN, DTO> implements GenericCrud
 	private JpaRepository<DOMAIN, Long> repository;
 
 	@Override
-	public void save(DTO dto) {
+	public DTO save(DTO dto) {
 		Optional<DOMAIN> optional = find(dto);
 		if (!optional.isPresent()) {
-			DOMAIN domainObject = mapToDomain(dto);
-			repository.save(domainObject);
+			DOMAIN domainObject = mapToDomain(dto);			
+			return mapToDto(repository.save(domainObject));
 		} else {
 			throw new ApiException(String.format("Registro %s ya existe en el sistema", dto));
 		}

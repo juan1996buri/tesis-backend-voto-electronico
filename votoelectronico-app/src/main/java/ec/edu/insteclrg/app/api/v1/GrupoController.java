@@ -33,9 +33,8 @@ public class GrupoController {
 	
 	@PostMapping
 	@RolesAllowed("ROLE_INSTITUTE")
-	public ResponseEntity<Object> save(@RequestBody GrupoDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+	public ResponseEntity<Object> save(@RequestBody GrupoDTO dto) {		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto) ), HttpStatus.CREATED);
 	}
 
 	@PutMapping

@@ -34,8 +34,8 @@ public class JuntaController {
 	@PostMapping
 	@RolesAllowed("ROLE_INSTITUTE")
 	public ResponseEntity<Object> save(@RequestBody JuntaDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto) ), HttpStatus.CREATED);
 	}
 
 	@PutMapping

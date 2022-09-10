@@ -34,8 +34,7 @@ public class ProvinciaController {
 	@PostMapping
 	@RolesAllowed("ROLE_ADMIN")
 	public ResponseEntity<Object> save(@RequestBody ProvinciaDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto)), HttpStatus.CREATED);
 
 	}
 

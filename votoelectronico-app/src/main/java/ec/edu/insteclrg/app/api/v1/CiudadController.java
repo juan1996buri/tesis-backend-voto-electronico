@@ -29,9 +29,8 @@ public class CiudadController {
 	private CiudadService service;
 
 	@PostMapping
-	public ResponseEntity<Object> save(@RequestBody CiudadDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+	public ResponseEntity<Object> save(@RequestBody CiudadDTO dto) {		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto)), HttpStatus.CREATED);
 	}
 
 	@PutMapping

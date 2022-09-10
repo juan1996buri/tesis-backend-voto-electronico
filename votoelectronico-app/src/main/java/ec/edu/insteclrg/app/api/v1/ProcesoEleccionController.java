@@ -24,12 +24,11 @@ import ec.edu.insteclrg.service.crud.ProcesoEleccionService;
 public class ProcesoEleccionController {
 
 	@Autowired
-	ProcesoEleccionService service;
+	private ProcesoEleccionService service;
 
 	@PostMapping
-	public ResponseEntity<Object> guardar(@RequestBody ProcesoEleccionDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+	public ResponseEntity<Object> guardar(@RequestBody ProcesoEleccionDTO dto) {		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto)), HttpStatus.CREATED);	
 	}
 
 	@PutMapping
@@ -49,7 +48,7 @@ public class ProcesoEleccionController {
 		}
 	}
 
-	@GetMapping(path = "/{id}/buscar")
+	@GetMapping(path = "/{id}")
 	public ResponseEntity<Object> buscar(@PathVariable Long id) {
 		ProcesoEleccionDTO dto = new ProcesoEleccionDTO();
 		dto.setId(id);
@@ -67,7 +66,7 @@ public class ProcesoEleccionController {
 		ProcesoEleccionDTO dto = new ProcesoEleccionDTO();
 		dto.setId(id);
 		service.delete(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Proceso eliminado con exito"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 }

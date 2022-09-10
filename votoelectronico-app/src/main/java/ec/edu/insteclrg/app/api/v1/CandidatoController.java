@@ -31,8 +31,8 @@ public class CandidatoController {
 
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody CandidatoDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true,service.save(dto) ), HttpStatus.CREATED);
 	}
 
 	@PutMapping

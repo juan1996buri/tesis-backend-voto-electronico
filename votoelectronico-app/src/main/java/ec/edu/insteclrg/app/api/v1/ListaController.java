@@ -24,12 +24,11 @@ import ec.edu.insteclrg.service.crud.ListaService;
 public class ListaController {
 
 	@Autowired
-	ListaService service;
+	private ListaService service;
 
 	@PostMapping
-	public ResponseEntity<Object> guardar(@RequestBody ListaDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+	public ResponseEntity<Object> guardar(@RequestBody ListaDTO dto) {		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto)), HttpStatus.CREATED);
 	}
 
 	@PutMapping
@@ -67,7 +66,7 @@ public class ListaController {
 		ListaDTO dto = new ListaDTO();
 		dto.setId(id);
 		service.delete(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "Lista eliminada con exito"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 }
