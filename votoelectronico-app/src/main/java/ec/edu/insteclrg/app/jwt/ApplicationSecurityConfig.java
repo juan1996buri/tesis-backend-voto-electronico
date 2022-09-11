@@ -61,7 +61,7 @@ public class ApplicationSecurityConfig {
 		http.authorizeRequests()
 				.antMatchers("/api/v1.0/usuario/**", "/api/v1.0/provincia/**", "/api/v1.0/ciudad/**",
 						"/api/v1.0/tipoInstitucion/**", "/api/v1.0/institucion/**", "/api/v1.0/votante/**",
-						"/api/v1.0/voto/**", "/api/v1.0/lista/**", "/api/v1.0/candidato/**", "/api/v1.0/voto/**")
+						"/api/v1.0/voto/**", "/api/v1.0/lista/**", "/api/v1.0/candidato/**", "/api/v1.0/voto/**", "/api/v1.0/procesoeleccion/**")
 				.permitAll().anyRequest().authenticated();
 
 		http.exceptionHandling().authenticationEntryPoint((request, response, ex) -> {
