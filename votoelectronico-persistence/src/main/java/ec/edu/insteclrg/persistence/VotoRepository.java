@@ -13,5 +13,10 @@ public interface VotoRepository extends JpaRepository<Voto, Long>{
 	
 	@Query(value = "SELECT * FROM voto WHERE votante_id=?1  and procesoeleccion_id=?2", nativeQuery = true)
 	Optional<Voto> buscarPorIdVotante(String idVotante,String idProcesoEleccion);
+	
+	
+	@Query(value = "SELECT COUNT(*) FROM voto WHERE procesoeleccion_id=?1 and lista_id=?2", nativeQuery = true)
+	String cantidadVotos(String idProcesoEleccion,String idLista);
+
 }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import ec.edu.insteclrg.common.ApiException;
 import ec.edu.insteclrg.domain.Voto;
+import ec.edu.insteclrg.dto.ConteoVotoDTO;
 import ec.edu.insteclrg.dto.ValidarVotoDTO;
 import ec.edu.insteclrg.dto.VotoDTO;
 import ec.edu.insteclrg.persistence.VotoRepository;
@@ -37,15 +38,19 @@ public class VotoService extends GenericCrudServiceImpl<Voto, VotoDTO> {
 	}
 
 	public VotoDTO obtenerVotoRealizadoPorVotante(ValidarVotoDTO dto) {
-		
+
 		Optional<Voto> optional = repository.buscarPorIdVotante(dto.getIdVotante(), dto.getIdProcesoEleccion());
 		if (optional.isPresent()) {
 			VotoDTO votoDTO = mapToDto(optional.get());
 			votoDTO.getVotante().setCodigo("");
-			//return votoDTO;
+			// return votoDTO;
 			throw new ApiException(String.format("Registro %s no existe en el sistema", dto));
 		} else {
 			return null;
 		}
+	}
+
+	public String obtenerCantidadVotos(ConteoVotoDTO dto) {
+		return repository.cantidadVotos(dto.getIdProcesoEleccion(), dto.getIdLista());
 	}
 }

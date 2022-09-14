@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
+import ec.edu.insteclrg.dto.ConteoVotoDTO;
 import ec.edu.insteclrg.dto.ValidarVotoDTO;
 import ec.edu.insteclrg.dto.VotoDTO;
 import ec.edu.insteclrg.service.crud.VotoService;
@@ -48,5 +49,10 @@ public class VotoController {
 	public ResponseEntity<Object> obtenerVotoRealizado(@RequestBody ValidarVotoDTO dto) {
 		service.obtenerVotoRealizadoPorVotante(dto);
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.OK);
+	}
+	
+	@PostMapping(path = "/conteo")
+	public ResponseEntity<Object> obtenerCantidadVotos(@RequestBody ConteoVotoDTO dto) {		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.obtenerCantidadVotos(dto)), HttpStatus.OK);
 	}
 }

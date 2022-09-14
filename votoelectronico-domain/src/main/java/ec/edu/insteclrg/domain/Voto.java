@@ -23,7 +23,7 @@ public class Voto {
 	private long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "junta_id")
+	@JoinColumn(name = "lista_id")
 	private Lista lista;
 	
 	@ManyToOne
