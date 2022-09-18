@@ -22,9 +22,8 @@ public class Candidato {
 	@Column(updatable = false, nullable = false)
 	private long id;	
 	
-	@ManyToOne
-	@JoinColumn(name = "votante_id")
-	private Votante votante;
+	@Column()
+	private String  nombre;
 	
 	@ManyToOne
 	@JoinColumn(name = "tipo_candidato_id")
@@ -32,11 +31,7 @@ public class Candidato {
 	
 	@ManyToOne
 	@JoinColumn(name = "lista_id")
-	private Lista lista;
-	
-	@ManyToOne
-	@JoinColumn(name = "proceso_eleccion_id")
-	private ProcesoEleccion procesoEleccion;	
+	private Lista lista;	
 	
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")

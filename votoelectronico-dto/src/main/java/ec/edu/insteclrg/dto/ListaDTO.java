@@ -11,7 +11,5 @@ public class ListaDTO {
 
 	private String nombre;
 
-	private Boolean activo;
-
 	private ProcesoEleccionDTO procesoEleccion;
 }

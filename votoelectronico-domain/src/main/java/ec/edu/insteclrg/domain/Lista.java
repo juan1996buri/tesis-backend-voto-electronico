@@ -29,9 +29,6 @@ public class Lista {
 	@Column(nullable = false)
 	private String nombre;
 
-	@Column
-	private Boolean activo;
-
 	@ManyToOne
 	@JoinColumn(name = "procesoeleccion_id")
 	private ProcesoEleccion procesoEleccion;
