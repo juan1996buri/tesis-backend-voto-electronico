@@ -29,14 +29,14 @@ public class SexoController {
 	
 	@PostMapping
 	public ResponseEntity<Object> guardar(@RequestBody SexoDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "El sexo a sido guardado"), HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto) ), HttpStatus.CREATED);
 	}
 
 	@PutMapping
 	public ResponseEntity<Object> actualizar(@RequestBody SexoDTO dto) {
 		service.update(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "El sexo a sido actualizado"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 
 	@GetMapping
@@ -68,7 +68,7 @@ public class SexoController {
 		SexoDTO dto = new SexoDTO();
 		dto.setId(id);
 		service.delete(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, "El sexo a sido eliminado"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
 	}
 	
 }

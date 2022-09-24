@@ -31,8 +31,8 @@ public class TipoInstitucionController {
 
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody TipoInstitucionDTO dto) {
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true, false), HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, service.save(dto) ), HttpStatus.CREATED);
 	}
 
 	@PutMapping
