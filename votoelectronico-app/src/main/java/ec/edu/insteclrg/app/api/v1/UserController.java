@@ -20,20 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.insteclrg.app.jwt.JwtTokenUtil;
 import ec.edu.insteclrg.common.dto.ApiResponseDTO;
+import ec.edu.insteclrg.domain.CambiarPassword;
 import ec.edu.insteclrg.domain.User;
 import ec.edu.insteclrg.domain.UserLogin;
 import ec.edu.insteclrg.dto.RolesDTO;
 import ec.edu.insteclrg.dto.UserDTO;
 import ec.edu.insteclrg.service.crud.UserService;
 
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/api/v1.0/usuario")
 public class UserController {
-	
+
 	/*
-	 ROLE_ADMIN
-	 ROLE_INSTITUTE
+	 * ROLE_ADMIN ROLE_INSTITUTE
 	 */
 
 	@Autowired
@@ -46,17 +46,7 @@ public class UserController {
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
-	private JwtTokenUtil jwUtil;
-
-	@PostMapping("/registrar")
-	public ResponseEntity<Object> save(@RequestBody  UserDTO dto) {
-		RolesDTO role=new RolesDTO();
-		role.setId(2);
-		dto.setRoles(role);
-		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
-		service.save(dto);
-		return new ResponseEntity<>(new ApiResponseDTO<>(true,null ), HttpStatus.CREATED);
-	}
+	private JwtTokenUtil jwUtil;	
 
 	@GetMapping
 	public ResponseEntity<Object> respuesta() {
@@ -65,22 +55,6 @@ public class UserController {
 			return new ResponseEntity<>(new ApiResponseDTO<>(true, optional), HttpStatus.CREATED);
 		}
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, optional), HttpStatus.NOT_FOUND);
-	}
-
-	@PostMapping("/login")
-	public ResponseEntity<Object> login(@RequestBody UserLogin userLogin) {
-		try {
-			Authentication authentication = authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(userLogin.getRuc(), userLogin.getPassword()));
-			User user = (User) authentication.getPrincipal();
-			String token = jwUtil.generateAccessToken(user);
-			userLogin.setPassword("");
-			userLogin.setToken(token);
-			userLogin.setRoles(user.getRoles());
-			return new ResponseEntity<>(new ApiResponseDTO<>(true, userLogin), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
 	}
 
 	@GetMapping(value = "/username")
@@ -94,5 +68,53 @@ public class UserController {
 		}
 
 		return new ResponseEntity<>(new ApiResponseDTO<>(true, false), HttpStatus.NOT_FOUND);
+	}
+
+	@PostMapping("/registrar")
+	public ResponseEntity<Object> save(@RequestBody UserDTO dto) {
+		RolesDTO role = new RolesDTO();
+		role.setId(2);
+		dto.setRoles(role);
+		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+		service.save(dto);
+		return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.CREATED);
+	}
+
+	@PostMapping("/login")
+	public ResponseEntity<Object> login(@RequestBody UserLogin userLogin) {
+		try {
+			Authentication authentication = authenticationManager
+					.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getRuc(), userLogin.getPassword()));
+			User user = (User) authentication.getPrincipal();
+			String token = jwUtil.generateAccessToken(user);
+			userLogin.setPassword("");
+			userLogin.setToken(token);
+			userLogin.setRoles(user.getRoles());
+			return new ResponseEntity<>(new ApiResponseDTO<>(true, userLogin), HttpStatus.OK);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+
+	@PostMapping
+	public ResponseEntity<Object> resetPassword(@RequestBody CambiarPassword cambiarPassword) {
+		try {
+			Authentication authentication = authenticationManager
+					.authenticate(new UsernamePasswordAuthenticationToken(cambiarPassword.getRuc(), cambiarPassword.getAntiguoPassword()));
+			User user = (User) authentication.getPrincipal();
+			RolesDTO role = new RolesDTO();
+			role.setId(user.getRoles().getId());
+			role.setNombre(user.getRoles().getNombre());			
+			UserDTO dto=new UserDTO();
+			dto.setId(user.getId());
+			dto.setPassword(passwordEncoder.encode(cambiarPassword.getNuevoPassword()));
+			dto.setRoles(role);
+			dto.setRuc(user.getRuc());				
+			service.update(dto);			
+			return new ResponseEntity<>(new ApiResponseDTO<>(true, null), HttpStatus.OK);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+		}
 	}
 }
