@@ -21,6 +21,7 @@ public class Votante {
 	@Column(updatable = false, nullable = false)
 	private long id;		
 	
+	@Column(unique = true)
 	private String cedula;
 	
 	@Column(nullable = false)	
